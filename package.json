@@ -1,0 +1,35 @@
+{
+  "name": "chess_app",
+  "version": "1.0.0",
+  "description": "The Chess app is a fun side project and vehicle for experimentation for some of the newer technologies, data structures, andalgorithms I've been learning about.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "npx tsc",
+    "start": "nodemon ./dist/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fwklaus/chess-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fwklaus/chess-app/issues"
+  },
+  "homepage": "https://github.com/fwklaus/chess-app#readme",
+  "devDependencies": {
+    "@types/node": "^20.8.6",
+    "nodemon": "^3.0.1",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.2"
+  }
+}
