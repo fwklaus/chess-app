@@ -1,4 +1,93 @@
 extends layout
 
-block home
-  h2 Home Page
+block game
+  div(class="game-board")
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+
+
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+    div(class="square")
+    div(class="square black")
+
+block timer
+  div(id="timer")
+    div(class="active-time")
+      p Time:
+      div(id="pc-timer") 
+          p Computer: 
+            h1 6:00
+      div(id="player-timer")  
+          p Player: 
+            h1 6:00
+      button(id="start" type="button") Start 
+  
+
+block settings
+  div(class="settings")
+    img(src="/images/cog3.png", alt="settings-icon")
