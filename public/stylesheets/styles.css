@@ -18,7 +18,6 @@ body {
 
 header, main {
   text-align: center;
-  outline: 1px solid white;
   max-width: 90%;
   margin: 0 auto;
 }
@@ -29,7 +28,6 @@ header {
 }
 
 main {
-  outline: 1px solid white;
   background-color: teal;
   padding: 90px 0;
   display: flex;
@@ -38,13 +36,13 @@ main {
 
 h1, h2 {
   display: inline-block;
-  outline: 1px solid white;
 }
 
 h1 {
   font-size: 3rem;
   background-color: red;
   vertical-align: middle;
+  border: 1px solid white;
 }
 
 h2 {
@@ -78,7 +76,6 @@ h2 {
   font-size: 1rem;
 }
 
-
 .active-time {
   position: relative;
   top: 36%;
@@ -110,10 +107,17 @@ h2 {
   display: block;
 }
 
+.settings img:hover {
+  cursor: pointer;
+  background-color: white;
+  border-radius: 1rem;
+}
+
 img {
   width: 100%;
 }
 
-img:hover {
-  cursor: pointer;
+.square img.player:hover {
+  background-color: red;
+  cursor: grab;
 }
