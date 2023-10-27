@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "build": "npx tsc && bash lib/mv-front-js-to-pub.sh",
     "start": "node dist/app.js",
     "dev": "nodemon dist/app.js",
@@ -43,6 +43,7 @@
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "morgan": "^1.10.0",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "ts-jest": "^29.1.1"
   }
 }

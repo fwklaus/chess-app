@@ -6,6 +6,7 @@ let store = require('connect-loki');
 
 // dotenv.config();
 
+module.exports.failure = undefined;
 
 const app: Express = express();
 const host = 'localhost';
