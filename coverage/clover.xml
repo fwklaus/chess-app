@@ -1,31 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1698446418706" clover="3.2.0">
-  <project timestamp="1698446418706" name="All files">
-    <metrics statements="22" coveredstatements="19" conditionals="7" coveredconditionals="6" methods="4" coveredmethods="1" elements="33" coveredelements="26" complexity="0" loc="22" ncloc="22" packages="1" files="1" classes="1"/>
-    <file name="app.js" path="/home/fwklaus/chess_app/dist/app.js">
-      <metrics statements="22" coveredstatements="19" conditionals="7" coveredconditionals="6" methods="4" coveredmethods="1"/>
-      <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
-      <line num="3" count="2" type="cond" truecount="3" falsecount="1"/>
-      <line num="5" count="1" type="stmt"/>
-      <line num="6" count="1" type="stmt"/>
-      <line num="7" count="1" type="stmt"/>
-      <line num="8" count="1" type="stmt"/>
-      <line num="11" count="1" type="stmt"/>
-      <line num="12" count="1" type="stmt"/>
-      <line num="13" count="1" type="stmt"/>
-      <line num="15" count="1" type="stmt"/>
-      <line num="16" count="1" type="stmt"/>
-      <line num="17" count="1" type="stmt"/>
-      <line num="18" count="1" type="stmt"/>
-      <line num="19" count="1" type="stmt"/>
-      <line num="20" count="1" type="stmt"/>
-      <line num="21" count="1" type="stmt"/>
-      <line num="22" count="1" type="stmt"/>
-      <line num="23" count="0" type="stmt"/>
-      <line num="25" count="1" type="stmt"/>
-      <line num="26" count="0" type="stmt"/>
-      <line num="28" count="1" type="stmt"/>
-      <line num="29" count="0" type="stmt"/>
-    </file>
+<coverage generated="1698525559124" clover="3.2.0">
+  <project timestamp="1698525559125" name="All files">
+    <metrics statements="35" coveredstatements="33" conditionals="0" coveredconditionals="0" methods="14" coveredmethods="12" elements="49" coveredelements="45" complexity="0" loc="35" ncloc="35" packages="3" files="3" classes="3"/>
+    <package name="lib">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="config.js" path="/home/fwklaus/chess_app/lib/config.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src">
+      <metrics statements="20" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <file name="app.ts" path="/home/fwklaus/chess_app/src/app.ts">
+        <metrics statements="20" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.lib">
+      <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="12" coveredmethods="12"/>
+      <file name="pieces.ts" path="/home/fwklaus/chess_app/src/lib/pieces.ts">
+        <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="12" coveredmethods="12"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="65" count="1" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>

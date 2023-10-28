@@ -1,17 +1,13 @@
-import express, { Express, Request, Response } from 'express';
+const config = require("../lib/config")
+import express, { Express, Request, Response} from 'express';
 import morgan from 'morgan';
 import session from "express-session";
 let store = require('connect-loki');
-// import dotenv from 'dotenv';
-
-// dotenv.config();
-
-module.exports.failure = undefined;
-
+let pieces = require('./lib/pieces');
+let routes = require('./lib/routes');
 const app: Express = express();
-const host = 'localhost';
-// const port = process.env.PORT;
-const port = 8000;
+const host: string = config.HOST;
+const port: string = config.PORT
 
 app.set("views", "./views");
 app.set("view engine", "pug");
@@ -30,7 +26,9 @@ app.get('/home', (req: Request, res: Response) => {
 });
 
 
+// to run tests, comment out the app.listen call following the export 
+export default app;
 
-app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running at http://${host}:${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`⚡ Listening on ${host}:${port}`);
+// });

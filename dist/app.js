@@ -3,16 +3,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const config = require("../lib/config");
 const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 let store = require('connect-loki');
-// import dotenv from 'dotenv';
-// dotenv.config();
-module.exports.failure = undefined;
+let pieces = require('./lib/pieces');
+let routes = require('./lib/routes');
 const app = (0, express_1.default)();
-const host = 'localhost';
-// const port = process.env.PORT;
-const port = 8000;
+const host = config.HOST;
+const port = config.PORT;
 app.set("views", "./views");
 app.set("view engine", "pug");
 app.use(express_1.default.json());
@@ -25,6 +24,8 @@ app.get('/', (req, res) => {
 app.get('/home', (req, res) => {
     res.render("main");
 });
-app.listen(port, () => {
-    console.log(`⚡️[server]: Server is running at http://${host}:${port}`);
-});
+// to run tests, comment out the app.listen call following the export 
+exports.default = app;
+// app.listen(port, () => {
+//   console.log(`⚡ Listening on ${host}:${port}`);
+// });
