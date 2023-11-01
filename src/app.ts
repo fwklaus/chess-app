@@ -1,10 +1,10 @@
-const config = require("../lib/config")
+const config = require("./lib/config")
+// let routes = require('./lib/routes');
 import express, { Express, Request, Response} from 'express';
 import morgan from 'morgan';
 import session from "express-session";
 let store = require('connect-loki');
-let pieces = require('./lib/pieces');
-let routes = require('./lib/routes');
+
 const app: Express = express();
 const host: string = config.HOST;
 const port: string = config.PORT
@@ -25,10 +25,9 @@ app.get('/home', (req: Request, res: Response) => {
   res.render("main");
 });
 
-
 // to run tests, comment out the app.listen call following the export 
-export default app;
+// export default app;
 
-// app.listen(port, () => {
-//   console.log(`⚡ Listening on ${host}:${port}`);
-// });
+app.listen(port, () => {
+  console.log(`⚡ Listening on ${host}:${port}`);
+});

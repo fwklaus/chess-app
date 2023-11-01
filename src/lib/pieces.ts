@@ -1,65 +1,87 @@
-class Pawn {
-  static type: string = "Pawn";
+// class Pawn implements PawnShape {
+//   type: string;
+//   initial: boolean;
+//   initialMove: boolean;
 
-  constructor() {}
+//   constructor() {
+//     this.initial = true;
+//     this.type = "Pawn";
+//     this.initialMove = false;
+//   }
 
-  static describeAction() {
-    return `I am a ${Pawn.type}. I can only move forward 1 square at a time. But when I attack, I can only move forward diagonally by 1 square.`;
-  }
-}
+//   promote(): SpecialPiece {
 
-class King {
-  static type: string = "King";
+//   }
 
-  constructor() {}
+//   isPromotable(): boolean {
+    
+//   }
 
-  static describeAction() {
-    return `I am a ${King.type}. I can only move forward 1 square in any direction. If I am cornered, the game is over.`;
-  }
-}
+//   attack(): Coordinates {
+    
+//   }
 
-class Queen {
-  static type: string = "Queen";
+//   getPosition(): Coordinates {
+    
+//   }
 
-  constructor() {}
+//   move(): Coordinates {
+    
+//   }
 
-  static describeAction() {
-    return `I am a ${Queen.type}. I can only as far as I want in any direction. I am the most powerful piece on the board, but my King gets all the credit.`;
-  }
-}
+//   describePiece() {
+//     return `I am a ${this.type}. I can only move forward 1 square at a time. But when I attack, I can only move forward diagonally by 1 square.`;
+//   }
+// }
 
-class Bishop {
-  static type: string = "Bishop";
+// class King implements KingShape {
+//   type: string = "King";
 
-  constructor(name: string) {}
+//   constructor() {}
 
-  static describeAction() {
-    return `I am a ${Bishop.type}. I move as far as I want diagonally in any direction. I'm the right hand for the King and the Queen.`;
-  }
-}
+//   describePiece() {
+//     return `I am a ${this.type}. I can only move forward 1 square in any direction. If I am cornered, the game is over.`;
+//   }
+// }
 
-class Knight {
-  static type: string = "Knight";
+// class Queen implements QueenShape {
+//   type: string = "Queen";
 
-  constructor(name: string) {}
+//   constructor() {}
 
-  static describeAction() {
-    return `I am a ${Knight.type}. I can jump over pieces. I also move in an L shape - either 1 up and 2 over, or 1 over and 2 up - in any direction.`;
-  }
-}
+//   describePiece() {
+//     return `I am a ${this.type}. I can only as far as I want in any direction. I am the most powerful piece on the board, but my King gets all the credit.`;
+//   }
+// }
 
-class Rook {
-  static type: string = "Rook";
+// class Bishop implements BishopShape {
+//   type: string = "Bishop";
 
-  constructor() {}
+//   constructor() {}
 
-  static describeAction() {
-    return `I am a ${Rook.type}. I can only move as far as I want horizontally and vertically in any direction.`;
-  }
-}
+//   describePiece() {
+//     return `I am a ${this.type}. I move as far as I want diagonally in any direction. I'm the right hand for the King and the Queen.`;
+//   }
+// }
 
-// module.exports = { King, Queen, Bishop, Knight, Rook, Pawn };
+// class Knight implements KnightShape {
+//   type: string = "Knight";
 
-// export{}
+//   constructor() {}
 
-export{ King, Queen, Bishop, Knight, Rook, Pawn };
+//   describePiece() {
+//     return `I am a ${this.type}. I can jump over pieces. I also move in an L shape - either 1 up and 2 over, or 1 over and 2 up - in any direction.`;
+//   }
+// }
+
+// class Rook implements RookShape {
+//   type: string = "Rook";
+
+//   constructor() {}
+
+//   describePiece() {
+//     return `I am a ${this.type}. I can only move as far as I want horizontally and vertically in any direction.`;
+//   }
+// }
+
+// export{ King, Queen, Bishop, Knight, Rook, Pawn };
