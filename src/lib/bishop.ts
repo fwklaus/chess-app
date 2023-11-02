@@ -1,8 +1,10 @@
 export class Bishop implements BishopShape {
   type: string;
+  position: Position;
 
-  constructor() {
+  constructor(position: Position) {
     this.type = "Bishop";
+    this.position = position;
   }
 
   move(): Position {

@@ -1,8 +1,10 @@
 export class Queen implements QueenShape {
   type: string;
+  position: Position;
 
-  constructor() {
+  constructor(position: Position) {
     this.type = "Queen";
+    this.position = position;
   }
 
   getPosition(): Position {

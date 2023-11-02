@@ -2,9 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Rook = void 0;
 class Rook {
-    constructor() {
+    constructor(position) {
         this.type = "Rook";
         this.initial = true;
+        this.position = position;
     }
     getPosition() {
         return ['a', 1];

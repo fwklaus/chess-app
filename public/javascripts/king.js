@@ -2,11 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.King = void 0;
 class King {
-    constructor() {
+    constructor(position) {
         this.type = "King";
         this.check = false;
         this.checkMate = false;
         this.initial = true;
+        this.position = position;
     }
     getPosition() {
         return ['a', 1];

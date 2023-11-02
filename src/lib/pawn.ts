@@ -7,26 +7,28 @@ export class Pawn implements PawnShape {
   type: string;
   initial: boolean;
   initialMove: boolean;
+  position: Position;
 
-  constructor() {
+  constructor(position: Position) {
     this.type = "Pawn";
     this.initial = true;
     this.initialMove = false;
+    this.position = position;
   }
 
   promote(type: PromotionTypes): PromotableShapes {
     switch(type) {
       case("rook"): 
-        return new Rook();
+        return new Rook(this.position);
         break;
       case("knight"):
-        return new Knight();
+        return new Knight(this.position);
         break;
       case("bishop"):
-        return new Bishop();
+        return new Bishop(this.position);
         break;
       case("queen"):
-        return new Queen();
+        return new Queen(this.position);
         break;
       default:
         let _exhaustiveCheck: never = type;

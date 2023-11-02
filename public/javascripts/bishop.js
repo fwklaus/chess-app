@@ -2,8 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Bishop = void 0;
 class Bishop {
-    constructor() {
+    constructor(position) {
         this.type = "Bishop";
+        this.position = position;
     }
     move() {
         return ['a', 1];

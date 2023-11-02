@@ -1,10 +1,12 @@
 export class Rook implements RookShape {
   type: string;
   initial: boolean;
+  position: Position;
 
-  constructor() {
+  constructor(position: Position) {
     this.type = "Rook";
     this.initial = true;
+    this.position = position;
   }
 
   getPosition(): Position {

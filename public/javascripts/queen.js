@@ -2,8 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Queen = void 0;
 class Queen {
-    constructor() {
+    constructor(position) {
         this.type = "Queen";
+        this.position = position;
     }
     getPosition() {
         return ['a', 1];

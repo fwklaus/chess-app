@@ -1,12 +1,17 @@
 type ChessRank = 'a'| 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h';
-type chessFile = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+type ChessFile = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 
 type Position = [ChessRank, ChessFile]; 
 
 type PromotionTypes = "rook" | "knight" | "bishop" | "queen";
 type PromotableShapes = RookShape | KnightShape | BishopShape | QueenShape;
 
+interface Position {
+  
+}
+
 interface StandardPiece {
+  position: Position;
   type: string;
   describePiece(): string;
   move(): Position;

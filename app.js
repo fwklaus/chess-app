@@ -4,10 +4,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const config = require("./lib/config");
-// let routes = require('./lib/routes');
+let routes = require('./lib/routes');
 const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
-let store = require('connect-loki');
+// import session from "express-session";
+// let store = require('connect-loki');
 const app = (0, express_1.default)();
 const host = config.HOST;
 const port = config.PORT;
@@ -17,14 +18,14 @@ app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
 app.use(express_1.default.static('public'));
 app.use((0, morgan_1.default)("common"));
-app.get('/', (req, res) => {
-    res.redirect("/home");
-});
-app.get('/home', (req, res) => {
-    res.render("main");
-});
-// to run tests, comment out the app.listen call following the export 
-// export default app;
-app.listen(port, () => {
-    console.log(`⚡ Listening on ${host}:${port}`);
-});
+app.get('/', routes.root);
+app.get('/home', routes.home);
+// to run tests on endpoints, comment out the app.listen call following the export
+module.exports = app;
+// app.listen(port, () => {
+//   console.log(`⚡ Listening on ${host}:${port}`);
+// });
+// setTimeout(() => {
+//   console.log("Ending Connection");
+//   server.close();
+// }, 10000);

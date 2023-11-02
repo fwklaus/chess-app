@@ -1,11 +1,13 @@
-// import express, { Express, Request, Response} from 'express';
+import express, { Express, Request, Response} from 'express';
 
-// export default {
-//   root(req: Request, res: Response) {
-//     res.redirect("/home");
-//   },
+let routes =  {
+  root(req: Request, res: Response) {
+    res.redirect("/home");
+  },
 
-//   home(req: Request, res: Response) {
-//     res.render("main");
-//   }
-// }
+  home(req: Request, res: Response) {
+    res.render("main");
+  }
+}
+
+module.exports = routes;

@@ -3,12 +3,14 @@ export class King implements KingShape {
   check: boolean;
   checkMate: boolean;
   initial: boolean;
+  position: Position;
   
-  constructor() {
+  constructor(position: Position) {
     this.type = "King";
     this.check = false;
     this.checkMate = false;  
     this.initial = true;
+    this.position = position;
   }
   getPosition(): Position {
     return ['a', 1];   

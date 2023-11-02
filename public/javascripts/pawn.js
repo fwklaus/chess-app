@@ -6,24 +6,25 @@ const knight_1 = require("./knight");
 const queen_1 = require("./queen");
 const rook_1 = require("./rook");
 class Pawn {
-    constructor() {
+    constructor(position) {
         this.type = "Pawn";
         this.initial = true;
         this.initialMove = false;
+        this.position = position;
     }
     promote(type) {
         switch (type) {
             case ("rook"):
-                return new rook_1.Rook();
+                return new rook_1.Rook(this.position);
                 break;
             case ("knight"):
-                return new knight_1.Knight();
+                return new knight_1.Knight(this.position);
                 break;
             case ("bishop"):
-                return new bishop_1.Bishop();
+                return new bishop_1.Bishop(this.position);
                 break;
             case ("queen"):
-                return new queen_1.Queen();
+                return new queen_1.Queen(this.position);
                 break;
             default:
                 let _exhaustiveCheck = type;

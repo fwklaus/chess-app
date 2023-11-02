@@ -1,15 +1,12 @@
-let request = require('supertest');
 import {describe, expect, test, beforeAll, beforeEach} from '@jest/globals';
-const app = require('../src/app.ts');
+
 const { King } = require('../src/lib/king.ts');
 const { Queen } = require('../src/lib/queen.ts');
 const { Bishop} = require('../src/lib/bishop.ts');
 const { Knight} = require('../src/lib/knight.ts');
 const { Rook} = require('../src/lib/rook.ts');
 const { Pawn } = require('../src/lib/pawn.ts');
-
-// const { King, Queen, Bishop, Knight, Rook, Pawn } = require('../src/lib/pieces.ts');
-// const routes = require(`../src/lib/routes.ts`);
+const { Game } = require('../src/lib/game.ts')
 
 describe("Pawn Tests", () => {
   test("Pawn is a Pawn object", () => {
@@ -27,25 +24,13 @@ describe("Pawn Tests", () => {
     expect(result).toBe(string);
   });
 
-  test("promote returns an instance of a PromotableType", () => {
-
-  });
-  
-  test("isPromotable returns true if pawn position is in the last file", () => {
-
-  });
-
-  test("getPosition returns current pawn position", () => {
-  
-  });
-
-  test("move returns the position of the square the pawn moves to", () => {
-
-  });
-
-  test("attack returns true when the pawn attack removes a piece from the board", () => {
-
-  });
+  test.todo("promote returns an instance of a PromotableType");
+  test.todo("isPromotable returns true if pawn position is in the last file");
+  test.todo("getPosition returns current pawn position");
+  test.todo("move returns the position of the square the pawn moves to");
+  test.todo("attack returns true when the pawn attack removes a piece from the board");
+  test.todo("instantiation sets the pawn position for player 1 to file 2");
+  test.todo("instantiation sets the pawn position for player 2 to file 7");
 });
 
 describe("King Tests", () => {
@@ -56,24 +41,14 @@ describe("King Tests", () => {
     expect(typeof result).toBe('object');
   });
 
-  test("getPosition returns current king position", () => {
-  
-  });
-
-  test("isThreatPosition returns true if a potential movement places king in check", () => {
-
-  });
-
-  test("move returns the position of the square the king moves to", () => {
-
-  });
-
-  test("attack returns true when a king attack removes a piece from the board", () => {
-
-  });
+  test.todo("getPosition returns current king position");
+  test.todo("isThreatPosition returns true if a potential movement places king in check");
+  test.todo("move returns the position of the square the king moves to");
+  test.todo("attack returns true when a king attack removes a piece from the board");
 
   test("King.describePiece returns string", () => {
     let result = new King().describePiece();
+
     let string = "I am a King. I can only move forward 1 square in any direction. If I am cornered, the game is over.";
 
     expect(typeof result).toBe('string');
@@ -89,17 +64,9 @@ describe("Queen Tests", () => {
     expect(typeof result).toBe('object');
   });
 
-  test("getPosition returns current queen position", () => {
-  
-  });
-
-  test("move returns the position of the square the queen moves to", () => {
-
-  });
-
-  test("attack returns true when a queen attack removes a piece from the board", () => {
-
-  });
+  test.todo("getPosition returns current queen position");
+  test.todo("move returns the position of the square the queen moves to");
+  test.todo("attack returns true when a queen attack removes a piece from the board");
 
   test("Queen.describePiece returns string", () => {
     let result = new Queen().describePiece();
@@ -118,17 +85,9 @@ describe("Bishop Tests", () => {
     expect(typeof result).toBe('object');
   });
 
-  test("getPosition returns current bishop position", () => {
-  
-  });
-
-  test("move returns the position of the square the bishop moves to", () => {
-
-  });
-
-  test("attack returns true when the bishop attack removes a piece from the board", () => {
-
-  });
+  test.todo("getPosition returns current bishop position");
+  test.todo("move returns the position of the square the bishop moves to");
+  test.todo("attack returns true when the bishop attack removes a piece from the board");
 
   test("Bishop.describePiece returns string", () => {
     let result = new Bishop().describePiece();
@@ -147,17 +106,9 @@ describe("Knight Tests", () => {
     expect(typeof result).toBe('object');
   });
 
-  test("getPosition returns current knight position", () => {
-  
-  });
-
-  test("move returns the position of the square the knight moves to", () => {
-
-  });
-
-  test("attack returns true when a knight attack removes a piece from the board", () => {
-
-  });
+  test.todo("getPosition returns current knight position");
+  test.todo("move returns the position of the square the knight moves to");
+  test.todo("attack returns true when a knight attack removes a piece from the board");
 
   test("Knight.describePiece returns string", () => {
     let result = new Knight().describePiece();
@@ -176,17 +127,9 @@ describe("Rook Tests", () => {
     expect(typeof result).toBe('object');
   });
 
-  test("getPosition returns current rook position", () => {
-  
-  });
-
-  test("move returns the position of the square the rook moves to", () => {
-
-  });
-
-  test("attack returns true when the rook attack removes a piece from the board", () => {
-
-  });
+  test.todo("getPosition returns current rook position");
+  test.todo("move returns the position of the square the rook moves to");
+  test.todo("attack returns true when the rook attack removes a piece from the board");
 
   test("Rook.describePiece returns string", () => {
     let result = new Rook().describePiece();
@@ -196,11 +139,3 @@ describe("Rook Tests", () => {
     expect(result).toBe(string);
   });
 });
-
-// async test
-// describe("GET routes", () => {
-//   test("root request responds with status code 200", async () => {
-//     const response = await request(app).get("/");
-//     expect(response.statusCode).toBe(200);
-//   });
-// });

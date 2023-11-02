@@ -1,8 +1,10 @@
 export class Knight implements KnightShape {
   type: string;
+  position: Position;
 
-  constructor() {
+  constructor(position: Position) {
     this.type = "Knight";
+    this.position = position;
   }
   
   getPosition(): Position {
