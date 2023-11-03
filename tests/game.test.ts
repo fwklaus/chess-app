@@ -1,12 +1,7 @@
 import {describe, expect, test, beforeAll, beforeEach} from '@jest/globals';
 
-const { King } = require('../src/lib/king.ts');
-const { Queen } = require('../src/lib/queen.ts');
-const { Bishop} = require('../src/lib/bishop.ts');
-const { Knight} = require('../src/lib/knight.ts');
-const { Rook} = require('../src/lib/rook.ts');
-const { Pawn } = require('../src/lib/pawn.ts');
 const { Game, Player, Board}  = require('../src/lib/game')
+const { Pawn, Rook, Knight, Bishop, Queen, King, Piece } = require('../src/lib/pieces');
 
 describe("Pawn Tests", () => {
   test("Pawn is a Pawn object", () => {
@@ -146,16 +141,45 @@ describe("GameBoard Tests", () => {
     expect(typeof board).toBe('object');
   });
 
-  test("Gameboard has 64 string keys", () => {
+  test("Gameboard has 64 squares", () => {
     let board = new Board();
 
-    console.log(board.squares)
-    let keys = Object.keys(board.squares);
-    let allStrings = keys.every((key) => {
-      return typeof key === 'string'; 
+    let squares = Object.keys(board.squares);
+    let allStrings = squares.every((square) => {
+      return typeof square === 'string'; 
     });
 
     expect(allStrings).toBe(true);
-    expect(keys.length).toBe(64);
+    expect(squares.length).toBe(64);
   });
+
+  test("Gameboard squares represent valid Rank and File Coordinates", () => {
+    let files = [1, 2, 3, 4, 5, 6, 7, 8];
+    let ranks = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+    let validCoordinates: string[] = [];
+    let board = new Board();
+    let allSquares = Object.keys(board.squares);
+    
+    files.forEach(file => {
+      ranks.forEach(rank => {
+        let squareCoordinate = rank + String(file);
+        validCoordinates.push(squareCoordinate);
+      });
+    });
+    
+    let allValid = validCoordinates.every((validSquare) => {
+      return allSquares.includes(validSquare);
+    });
+
+    expect(allValid).toBe(true);
+  });
+});
+
+
+describe("Player tests", () => {
+
+});
+
+describe("Game tests", () => {
+
 });

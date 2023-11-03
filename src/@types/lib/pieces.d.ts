@@ -1,22 +1,20 @@
-type ChessRank = 'a'| 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h';
-type ChessFile = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+// type ChessRank = 'a'| 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h';
+// type ChessFile = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 
-type Position = [ChessRank, ChessFile]; 
+// type Position = [ChessRank, ChessFile]; 
+
+type Position = string; // use Regex to validate the string 
 
 type PromotionTypes = "rook" | "knight" | "bishop" | "queen";
 type PromotableShapes = RookShape | KnightShape | BishopShape | QueenShape;
 
-interface Position {
-  
-}
+type AllPieces = (StandardPiece | SpecialPiece)[];
 
 interface StandardPiece {
-  position: Position;
-  type: string;
-  describePiece(): string;
-  move(): Position;
-  attack(): boolean;
+  position: Position | null;
+  #setPosition(position: Position): Position;
   getPosition(): Position;
+  move(oldPos: Position, newPos: Position): Position;
 }
 
 interface SpecialPiece extends StandardPiece {

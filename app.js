@@ -20,7 +20,7 @@ app.use(express_1.default.static('public'));
 app.use((0, morgan_1.default)("common"));
 app.get('/', routes.root);
 app.get('/home', routes.home);
-// to run tests on endpoints, comment out the app.listen call following the export
+// to run tests on endpoints (app.test.ts), comment out the app.listen call following the export
 module.exports = app;
 app.listen(port, () => {
     console.log(`⚡ Listening on ${host}:${port}`);

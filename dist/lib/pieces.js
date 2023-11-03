@@ -1,60 +1,132 @@
 "use strict";
-// class Pawn implements PawnShape {
-//   type: string;
-//   initial: boolean;
-//   initialMove: boolean;
-//   constructor() {
-//     this.initial = true;
-//     this.type = "Pawn";
-//     this.initialMove = false;
-//   }
-//   promote(): SpecialPiece {
-//   }
-//   isPromotable(): boolean {
-//   }
-//   attack(): Coordinates {
-//   }
-//   getPosition(): Coordinates {
-//   }
-//   move(): Coordinates {
-//   }
-//   describePiece() {
-//     return `I am a ${this.type}. I can only move forward 1 square at a time. But when I attack, I can only move forward diagonally by 1 square.`;
-//   }
-// }
-// class King implements KingShape {
-//   type: string = "King";
-//   constructor() {}
-//   describePiece() {
-//     return `I am a ${this.type}. I can only move forward 1 square in any direction. If I am cornered, the game is over.`;
-//   }
-// }
-// class Queen implements QueenShape {
-//   type: string = "Queen";
-//   constructor() {}
-//   describePiece() {
-//     return `I am a ${this.type}. I can only as far as I want in any direction. I am the most powerful piece on the board, but my King gets all the credit.`;
-//   }
-// }
-// class Bishop implements BishopShape {
-//   type: string = "Bishop";
-//   constructor() {}
-//   describePiece() {
-//     return `I am a ${this.type}. I move as far as I want diagonally in any direction. I'm the right hand for the King and the Queen.`;
-//   }
-// }
-// class Knight implements KnightShape {
-//   type: string = "Knight";
-//   constructor() {}
-//   describePiece() {
-//     return `I am a ${this.type}. I can jump over pieces. I also move in an L shape - either 1 up and 2 over, or 1 over and 2 up - in any direction.`;
-//   }
-// }
-// class Rook implements RookShape {
-//   type: string = "Rook";
-//   constructor() {}
-//   describePiece() {
-//     return `I am a ${this.type}. I can only move as far as I want horizontally and vertically in any direction.`;
-//   }
-// }
-// export{ King, Queen, Bishop, Knight, Rook, Pawn };
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+var _Piece_instances, _Piece_setPosition;
+class Piece {
+    constructor(position) {
+        _Piece_instances.add(this);
+        this.position = null;
+        __classPrivateFieldGet(this, _Piece_instances, "m", _Piece_setPosition).call(this, position);
+    }
+    getPosition() {
+        if (this.position === null) {
+            throw new Error("Invalid request. Cannot get piece position until one is set");
+        }
+        else {
+            return this.position;
+        }
+    }
+    move(oldPos, newPos) {
+        __classPrivateFieldGet(this, _Piece_instances, "m", _Piece_setPosition).call(this, newPos);
+        if (this.position === null) {
+            throw new Error("Invalid request. Cannot get piece position until one is set");
+        }
+        else {
+            return this.position;
+        }
+    }
+}
+_Piece_instances = new WeakSet(), _Piece_setPosition = function _Piece_setPosition(position) {
+    this.position = position;
+    return this.position;
+};
+class Pawn extends Piece {
+    constructor(position) {
+        super(position);
+        this.type = "Pawn";
+        this.initial = true;
+        this.initialMove = false;
+    }
+    promote(type) {
+        if (this.position === null) {
+            throw new Error("Invalid call. Cannot promote piece that is set to null");
+        }
+        switch (type) {
+            case ("rook"):
+                return new Rook(this.position);
+                break;
+            case ("knight"):
+                return new Knight(this.position);
+                break;
+            case ("bishop"):
+                return new Bishop(this.position);
+                break;
+            case ("queen"):
+                return new Queen(this.position);
+                break;
+            default:
+                let _exhaustiveCheck = type;
+                throw new Error("Invalid " + JSON.stringify(_exhaustiveCheck));
+        }
+    }
+    isPromotable() {
+        return false;
+    }
+    describePiece() {
+        return `I am a ${this.type}. I can only move forward 1 square at a time. But when I attack, I can only move forward diagonally by 1 square.`;
+    }
+}
+class Rook extends Piece {
+    constructor(position) {
+        super(position);
+        this.type = "Rook";
+        this.initial = true;
+    }
+    describePiece() {
+        return `I am a ${this.type}. I can only move as far as I want horizontally and vertically in any direction.`;
+    }
+}
+class Knight extends Piece {
+    constructor(position) {
+        super(position);
+        this.type = "Knight";
+    }
+    describePiece() {
+        return `I am a ${this.type}. I can jump over pieces. I also move in an L shape - either 1 up and 2 over, or 1 over and 2 up - in any direction.`;
+    }
+}
+class Bishop extends Piece {
+    constructor(position) {
+        super(position);
+        this.type = "Bishop";
+    }
+    describePiece() {
+        return `I am a ${this.type}. I move as far as I want diagonally in any direction. I'm the right hand for the King and the Queen.`;
+    }
+}
+class Queen extends Piece {
+    constructor(position) {
+        super(position);
+        this.type = "Queen";
+    }
+    describePiece() {
+        return `I am a ${this.type}. I can only as far as I want in any direction. I am the most powerful piece on the board, but my King gets all the credit.`;
+    }
+}
+class King extends Piece {
+    constructor(position) {
+        super(position);
+        this.type = "King";
+        this.check = false;
+        this.checkMate = false;
+        this.initial = true;
+    }
+    isThreatPostion() {
+        return false;
+    }
+    describePiece() {
+        return `I am a ${this.type}. I can only move forward 1 square in any direction. If I am cornered, the game is over.`;
+    }
+}
+module.exports = {
+    Pawn,
+    Rook,
+    Knight,
+    Bishop,
+    Queen,
+    King,
+    Piece,
+};
