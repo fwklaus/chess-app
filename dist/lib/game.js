@@ -1,12 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Player = exports.Game = void 0;
+exports.Board = exports.Player = exports.Game = void 0;
 class Game {
-    // board: GameBoard;
     constructor() {
         this.player1 = new Player("player1");
         this.player2 = new Player("player2");
-        // this.board = new Board();
+        this.board = new Board();
     }
     reset() {
         return true;
@@ -49,3 +48,21 @@ class Player {
     }
 }
 exports.Player = Player;
+class Board {
+    constructor() {
+        this.ranks = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+        this.files = [1, 2, 3, 4, 5, 6, 7, 8];
+        this.squares = this.initGameBoard();
+    }
+    initGameBoard() {
+        let squares = {};
+        // let file: number = this.files[idx];
+        this.files.forEach((file) => {
+            this.ranks.forEach((rank) => {
+                squares[`${rank}${file}`] = null;
+            });
+        });
+        return squares;
+    }
+}
+exports.Board = Board;

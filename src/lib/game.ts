@@ -1,12 +1,12 @@
 export class Game implements Gameplay {
   player1: Players;
   player2: Players;
-  // board: GameBoard;
+  board: GameBoard;
 
   constructor() {
     this.player1 = new Player("player1");
     this.player2 = new Player("player2");
-    // this.board = new Board();
+    this.board = new Board();
   }
 
   reset(): boolean {
@@ -58,5 +58,26 @@ export class Player implements Players {
 
   beginTimer(): void {
     console.log("6:00"); // output start time for player
+  }
+}
+
+export class Board implements GameBoard {
+  squares: BoardObject;
+  ranks: Ranks = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+  files: Files = [1, 2, 3, 4, 5, 6, 7, 8];
+
+  constructor() {
+    this.squares = this.initGameBoard();
+  }
+
+  initGameBoard(): BoardObject { 
+    let squares: BoardObject = {};
+    this.files.forEach((file: number) => {
+      this.ranks.forEach((rank: string) => {
+        squares[`${rank}${file}`] = null;
+      });
+    });
+
+    return squares;
   }
 }

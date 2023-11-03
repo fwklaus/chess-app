@@ -22,10 +22,6 @@ app.get('/', routes.root);
 app.get('/home', routes.home);
 // to run tests on endpoints, comment out the app.listen call following the export
 module.exports = app;
-// app.listen(port, () => {
-//   console.log(`⚡ Listening on ${host}:${port}`);
-// });
-// setTimeout(() => {
-//   console.log("Ending Connection");
-//   server.close();
-// }, 10000);
+app.listen(port, () => {
+    console.log(`⚡ Listening on ${host}:${port}`);
+});
