@@ -1,11 +1,11 @@
 type Ranks = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
-type Files = [1, 2, 3, 4, 5, 6, 7, 8];
+type Files = ['1', '2', '3', '4', '5', '6', '7', '8'];
 
 interface BoardObject {
-  [key:string]: string | null;
+  [key:string]: StandardPiece | null;
 }
 
-interface Register {
+interface PieceMap {
   "p1": Roster;
   "p2": Roster;
 }
@@ -28,7 +28,7 @@ interface Players {
   pieces: allPieces;
   type: "p1" | "p2";
   beginTimer(): void;
-  setPieces(roster: Registry, board: GameBoard): void;
+  setPieces(roster: PieceMap, board: GameBoard): void;
   initializePieces(pieces: Roster, board: GameBoard): void;
 }
 
@@ -39,6 +39,7 @@ interface GameBoard {
   files: Files;
   initGameBoard(): BoardObject;
   registerPiece(piece: string, position: Position): StandardPiece;
+  assignSquare(newPiece: StandardPiece, oldPos?: StandardPiece);
   isValidPiece(name: string): boolean;
   isValidPosition(pos: string): boolean;
 }

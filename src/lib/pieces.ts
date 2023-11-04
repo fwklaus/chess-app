@@ -18,6 +18,7 @@ class Piece implements StandardPiece {
     }
   }
  
+  // need to register piece with board each time a piece moves
   move(oldPos: Position, newPos: Position): Position {
     this.#setPosition(newPos);
     if (this.position === null) {

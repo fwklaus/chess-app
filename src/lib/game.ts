@@ -1,3 +1,5 @@
+let { Pawn, King, Queen, Rook, Bishop, Knight } = require('./pieces');
+
 export class Game implements Gameplay {
   player1: Players;
   player2: Players;
@@ -6,7 +8,7 @@ export class Game implements Gameplay {
   constructor() {
     this.player1 = new Player("p1");
     this.player2 = new Player("p2");
-    this.board = new Board(this.player1, this.player2);
+    this.board = new Board();
     this.player1.setPieces(this.board.roster, this.board);
     this.player2.setPieces(this.board.roster, this.board);
   }
@@ -30,7 +32,8 @@ export class Player implements Players {
     this.type = player;
   }
   
-  setPieces(roster: Register, board: GameBoard): void {
+  // if player1, initialilze to p1 roster, if player2, initialize to p2 roster
+  setPieces(roster: PieceMap, board: GameBoard): void {
     switch(this.type) {
       case("p1"):
         this.initializePieces(roster.p1, board);
@@ -44,6 +47,7 @@ export class Player implements Players {
     }
   }
 
+  // create piece, set at position, register piece to board, and add to the players pieces
   initializePieces(pieces: Roster, board: GameBoard): void {
     let types = Object.keys(pieces);
 
@@ -73,8 +77,8 @@ export class Player implements Players {
 export class Board implements GameBoard {
   squares: BoardObject;
   ranks: Ranks = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
-  files: Files = [1, 2, 3, 4, 5, 6, 7, 8];
-  roster: Register = {
+  files: Files = ['1', '2', '3', '4', '5', '6', '7', '8'];
+  roster: PieceMap = {
     "p1": {
       "pawn": ['a2', 'b2', 'c2', 'd2', 'e2', 'f2', 'g2', 'h2'],
       "rook": ['a1', 'h1'],
@@ -93,13 +97,14 @@ export class Board implements GameBoard {
     }, 
   };
 
-  constructor(player1:  Players, player2: Players) {
+  constructor() {
     this.squares = this.initGameBoard();
   }
 
+  // set all squares to null on new game
   initGameBoard(): BoardObject { 
     let squares: BoardObject = {};
-    this.files.forEach((file: number) => {
+    this.files.forEach((file: string) => {
       this.ranks.forEach((rank: string) => {
         squares[`${rank}${file}`] = null;
       });
@@ -108,17 +113,9 @@ export class Board implements GameBoard {
     return squares;
   }
 
-      // iterate over the keys
-    // for each key, iterate over the positions
-    // create the piece specified by the key
-      // set the position of the piece to the position on each iteration
-
-
-      
-      // register the pieces position on the board
-        // find the square in the board
-          // set the object to the 
-
+  // create new piece and set position to initial position
+  // assign the square on the board to the piece
+  // return the piece
   registerPiece(piece: string, position: Position): StandardPiece {
     let newPiece: StandardPiece;
     switch(piece) {
@@ -141,11 +138,25 @@ export class Board implements GameBoard {
         newPiece = new King(position);
         break;
       default: 
-        throw new Error("Invalid piece");
+        throw new Error("Invalid piece"); // How do we test errors?
         break;
     }
 
+    this.assignSquare(newPiece);
     return newPiece;
+  }
+
+  // assign the piece to the new position
+  // if the piece is already on the board, remove it from its old position
+  assignSquare(piece: StandardPiece, oldPos?: StandardPiece) {
+      if (oldPos) {
+        // remove the piece from the old position
+        // assign null to old position
+        // assign the piece to the new position
+      }
+
+      this.squares[piece.getPosition()] = piece;
+      return this.squares[piece.getPosition()];
   }
 
   isValidPiece(name: string): boolean {
@@ -158,6 +169,9 @@ export class Board implements GameBoard {
   }
 
   isValidPosition(pos: string): boolean {
-    return pos.length === 2 && pos[0] in this.ranks && pos[1] in this.files;
+    let rank: any = pos[0];
+    let file: any = pos[1];
+
+    return pos.length === 2 && this.ranks.includes(rank) && this.files.includes(file);
   }
 }

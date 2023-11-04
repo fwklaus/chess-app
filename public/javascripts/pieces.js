@@ -19,6 +19,7 @@ class Piece {
             return this.position;
         }
     }
+    // need to register piece with board each time a piece moves
     move(oldPos, newPos) {
         __classPrivateFieldGet(this, _Piece_instances, "m", _Piece_setPosition).call(this, newPos);
         if (this.position === null) {
@@ -36,7 +37,7 @@ _Piece_instances = new WeakSet(), _Piece_setPosition = function _Piece_setPositi
 class Pawn extends Piece {
     constructor(position) {
         super(position);
-        this.type = "Pawn";
+        this.type = "pawn";
         this.initial = true;
         this.initialMove = false;
     }
@@ -72,7 +73,7 @@ class Pawn extends Piece {
 class Rook extends Piece {
     constructor(position) {
         super(position);
-        this.type = "Rook";
+        this.type = "rook";
         this.initial = true;
     }
     describePiece() {
@@ -82,7 +83,7 @@ class Rook extends Piece {
 class Knight extends Piece {
     constructor(position) {
         super(position);
-        this.type = "Knight";
+        this.type = "knight";
     }
     describePiece() {
         return `I am a ${this.type}. I can jump over pieces. I also move in an L shape - either 1 up and 2 over, or 1 over and 2 up - in any direction.`;
@@ -91,7 +92,7 @@ class Knight extends Piece {
 class Bishop extends Piece {
     constructor(position) {
         super(position);
-        this.type = "Bishop";
+        this.type = "bishop";
     }
     describePiece() {
         return `I am a ${this.type}. I move as far as I want diagonally in any direction. I'm the right hand for the King and the Queen.`;
@@ -100,7 +101,7 @@ class Bishop extends Piece {
 class Queen extends Piece {
     constructor(position) {
         super(position);
-        this.type = "Queen";
+        this.type = "queen";
     }
     describePiece() {
         return `I am a ${this.type}. I can only as far as I want in any direction. I am the most powerful piece on the board, but my King gets all the credit.`;
@@ -109,7 +110,7 @@ class Queen extends Piece {
 class King extends Piece {
     constructor(position) {
         super(position);
-        this.type = "King";
+        this.type = "king";
         this.check = false;
         this.checkMate = false;
         this.initial = true;
@@ -128,5 +129,4 @@ module.exports = {
     Bishop,
     Queen,
     King,
-    Piece,
 };

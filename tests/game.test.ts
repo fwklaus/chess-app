@@ -3,145 +3,8 @@ import {describe, expect, test, beforeAll, beforeEach} from '@jest/globals';
 const { Game, Player, Board}  = require('../src/lib/game')
 const { Pawn, Rook, Knight, Bishop, Queen, King, Piece } = require('../src/lib/pieces');
 
-describe("Pawn Tests", () => {
-  test("Pawn is a Pawn object", () => {
-    let result = new Pawn();
-    
-    expect(result instanceof Pawn).toBe(true);
-    expect(typeof result).toBe('object');
-  });
-
-  test("describePiece returns string", () => {
-    let result = new Pawn().describePiece();
-    let string = "I am a Pawn. I can only move forward 1 square at a time. But when I attack, I can only move forward diagonally by 1 square."
-
-    expect(typeof result).toBe('string');
-    expect(result).toBe(string);
-  });
-
-  test.todo("promote returns an instance of a PromotableType");
-  test.todo("isPromotable returns true if pawn position is in the last file");
-  test.todo("getPosition returns current pawn position");
-  test.todo("move returns the position of the square the pawn moves to");
-  test.todo("attack returns true when the pawn attack removes a piece from the board");
-  test.todo("instantiation sets the pawn position for player 1 to file 2");
-  test.todo("instantiation sets the pawn position for player 2 to file 7");
-});
-
-describe("King Tests", () => {
-  test("King is a King object", () => {
-    let result = new King();
-    
-    expect(result instanceof King).toBe(true);
-    expect(typeof result).toBe('object');
-  });
-
-  test.todo("getPosition returns current king position");
-  test.todo("isThreatPosition returns true if a potential movement places king in check");
-  test.todo("move returns the position of the square the king moves to");
-  test.todo("attack returns true when a king attack removes a piece from the board");
-
-  test("King.describePiece returns string", () => {
-    let result = new King().describePiece();
-
-    let string = "I am a King. I can only move forward 1 square in any direction. If I am cornered, the game is over.";
-
-    expect(typeof result).toBe('string');
-    expect(result).toBe(string);
-  });
-});
-
-describe("Queen Tests", () => {
-  test("Queen is a Queen object", () => {
-    let result = new Queen();
-    
-    expect(result instanceof Queen).toBe(true);
-    expect(typeof result).toBe('object');
-  });
-
-  test.todo("getPosition returns current queen position");
-  test.todo("move returns the position of the square the queen moves to");
-  test.todo("attack returns true when a queen attack removes a piece from the board");
-
-  test("Queen.describePiece returns string", () => {
-    let result = new Queen().describePiece();
-    let string = "I am a Queen. I can only as far as I want in any direction. I am the most powerful piece on the board, but my King gets all the credit.";
-
-    expect(typeof result).toBe('string');
-    expect(result).toBe(string);
-  });
-});
-
-describe("Bishop Tests", () => {
-  test("Bishop is a Bishop object", () => {
-    let result = new Bishop();
-    
-    expect(result instanceof Bishop).toBe(true);
-    expect(typeof result).toBe('object');
-  });
-
-  test.todo("getPosition returns current bishop position");
-  test.todo("move returns the position of the square the bishop moves to");
-  test.todo("attack returns true when the bishop attack removes a piece from the board");
-
-  test("Bishop.describePiece returns string", () => {
-    let result = new Bishop().describePiece();
-    let string = "I am a Bishop. I move as far as I want diagonally in any direction. I'm the right hand for the King and the Queen."
-
-    expect(typeof result).toBe('string');
-    expect(result).toBe(string);
-  });
-});
-
-describe("Knight Tests", () => {
-  test("Knight is a Knight object", () => {
-    let result = new Knight();
-    
-    expect(result instanceof Knight).toBe(true);
-    expect(typeof result).toBe('object');
-  });
-
-  test.todo("getPosition returns current knight position");
-  test.todo("move returns the position of the square the knight moves to");
-  test.todo("attack returns true when a knight attack removes a piece from the board");
-
-  test("Knight.describePiece returns string", () => {
-    let result = new Knight().describePiece();
-    let string = "I am a Knight. I can jump over pieces. I also move in an L shape - either 1 up and 2 over, or 1 over and 2 up - in any direction.";
-
-    expect(typeof result).toBe('string');
-    expect(result).toBe(string);
-  });
-});
-
-describe("Rook Tests", () => {
-  test("Rook is a Rook object", () => {
-    let result = new Rook();
-    
-    expect(result instanceof Rook).toBe(true);
-    expect(typeof result).toBe('object');
-  });
-
-  test.todo("getPosition returns current rook position");
-  test.todo("move returns the position of the square the rook moves to");
-  test.todo("attack returns true when the rook attack removes a piece from the board");
-
-  test("Rook.describePiece returns string", () => {
-    let result = new Rook().describePiece();
-    let string = "I am a Rook. I can only move as far as I want horizontally and vertically in any direction.";
-
-    expect(typeof result).toBe('string');
-    expect(result).toBe(string);
-  });
-});
-
 describe("GameBoard Tests", () => {
-  test("Gameboard is an object", () => {
-    let board = new Board();
-    expect(typeof board).toBe('object');
-  });
-
-  test("Gameboard has 64 squares", () => {
+  test("On initialization, new Board has 64 squares", () => {
     let board = new Board();
 
     let squares = Object.keys(board.squares);
@@ -153,7 +16,7 @@ describe("GameBoard Tests", () => {
     expect(squares.length).toBe(64);
   });
 
-  test("Gameboard squares represent valid Rank and File Coordinates", () => {
+  test("On initialization, new Board squares represent valid Rank and File Coordinates", () => {
     let files = [1, 2, 3, 4, 5, 6, 7, 8];
     let ranks = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
     let validCoordinates: string[] = [];
@@ -173,13 +36,123 @@ describe("GameBoard Tests", () => {
 
     expect(allValid).toBe(true);
   });
+
+test("registerPiece returns a Pawn instance at a given position", () => {
+    let board = new Board();
+    let type = "pawn";
+    let position = "a2"
+
+    let pawn = board.registerPiece(type, position);
+
+    console.log
+
+    expect(pawn instanceof Pawn).toBe(true);
+    expect(pawn.getPosition()).toBe(position);
+  });
+
+  test("registerPiece returns a Rook instance at a given position", () => {
+    let board = new Board();
+    let type = "rook";
+    let position = "a1"
+  
+    let rook = board.registerPiece(type, position);
+  
+    expect(rook instanceof Rook).toBe(true);
+    expect(rook.getPosition()).toBe(position);
+  });
+  
+  test("registerPiece returns a Knight instance at a given position", () => {
+    let board = new Board();
+    let type= "knight";
+    let position = "b1"
+  
+    let knight = board.registerPiece(type, position);
+  
+    expect(knight instanceof Knight).toBe(true);
+    expect(knight.getPosition()).toBe(position);
+  });
+  
+  test("registerPiece returns a Bishop instance at a given position", () => {
+    let board = new Board();
+    let type= "bishop";
+    let position = "c1"
+  
+    let bishop = board.registerPiece(type, position);
+  
+    expect(bishop instanceof Bishop).toBe(true);
+    expect(bishop.getPosition()).toBe(position);
+  });
+  
+  test("registerPiece returns a Queen instance at a given position", () => {
+    let board = new Board();
+    let type= "queen";
+    let position = "d1"
+  
+    let queen = board.registerPiece(type, position);
+  
+    expect(queen instanceof Queen).toBe(true);
+    expect(queen.getPosition()).toBe(position);
+  });
+  
+  test("registerPiece returns a King instance at a given position", () => {
+    let board = new Board();
+    let type= "king";
+    let position = "e1"
+  
+    let king = board.registerPiece(type, position);
+  
+    expect(king instanceof King).toBe(true);
+    expect(king.getPosition()).toBe(position);
+  });  
+
+  test("assignSquare assigns a piece to a given position on the board", () => {
+    let position = "a2";
+    let pawn = new Pawn(position);
+    let board = new Board();
+
+    let square = board.squares[position];
+    expect(square).toBeNull();    
+    
+    board.assignSquare(pawn);
+    square = board.squares[position];
+    expect(square).toBeTruthy();
+    expect(square instanceof Pawn).toBe(true);
+  });
+
+  test("isValidPiece returns false unless it receives: 'pawn', 'rook', 'knight', 'bishop', 'queen', or 'king'", () => {
+    let board = new Board();
+    let pieces = ['pawn', 'rook', 'knight', 'bishop', 'queen', 'king'];
+    let allValidPieces = pieces.every(piece => {
+      return board.isValidPiece(piece);
+    }); 
+
+    expect(allValidPieces).toBe(true);
+    expect(board.isValidPiece('tony')).toBe(false);
+    expect(board.isValidPiece('jerry')).toBe(false);
+  });
+
+  test("isValidPosition returns false for invalid board positions", () => {
+    let board = new Board();
+    let validPositions = Object.keys(board.squares);
+    let allValid = validPositions.every(pos => {
+      return board.isValidPosition(pos);
+    });
+
+    expect(allValid).toBe(true);
+    expect(board.isValidPosition("x5")).toBe(false);
+    expect(board.isValidPosition("i9")).toBe(false);
+  });
+
+  test.todo("assignSquare removes a piece from its old position on the board and assigns it to its new position");
+
+  test.todo("assignSquare returns the new position of the given piece");
 });
 
 
-describe("Player tests", () => {
+describe.skip("Player tests", () => {
 
 });
 
-describe("Game tests", () => {
+describe.skip("Game tests", () => {
 
 });

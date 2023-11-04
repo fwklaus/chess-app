@@ -1,94 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1699047216644" clover="3.2.0">
-  <project timestamp="1699047216644" name="All files">
-    <metrics statements="82" coveredstatements="42" conditionals="13" coveredconditionals="0" methods="31" coveredmethods="18" elements="126" coveredelements="60" complexity="0" loc="82" ncloc="82" packages="1" files="2" classes="2"/>
-    <file name="game.ts" path="/home/fwklaus/chess_app/src/lib/game.ts">
-      <metrics statements="30" coveredstatements="12" conditionals="3" coveredconditionals="0" methods="12" coveredmethods="4"/>
-      <line num="1" count="1" type="stmt"/>
-      <line num="7" count="0" type="stmt"/>
-      <line num="8" count="0" type="stmt"/>
-      <line num="9" count="0" type="stmt"/>
-      <line num="10" count="0" type="stmt"/>
-      <line num="11" count="0" type="stmt"/>
-      <line num="12" count="0" type="stmt"/>
-      <line num="17" count="0" type="stmt"/>
-      <line num="22" count="0" type="stmt"/>
-      <line num="26" count="1" type="stmt"/>
-      <line num="27" count="0" type="stmt"/>
-      <line num="31" count="0" type="stmt"/>
-      <line num="35" count="0" type="cond" truecount="0" falsecount="3"/>
-      <line num="37" count="0" type="stmt"/>
-      <line num="38" count="0" type="stmt"/>
-      <line num="40" count="0" type="stmt"/>
-      <line num="41" count="0" type="stmt"/>
-      <line num="43" count="0" type="stmt"/>
-      <line num="44" count="0" type="stmt"/>
-      <line num="55" count="0" type="stmt"/>
-      <line num="59" count="1" type="stmt"/>
-      <line num="61" count="3" type="stmt"/>
-      <line num="62" count="3" type="stmt"/>
-      <line num="63" count="3" type="stmt"/>
-      <line num="83" count="3" type="stmt"/>
-      <line num="87" count="3" type="stmt"/>
-      <line num="88" count="3" type="stmt"/>
-      <line num="89" count="24" type="stmt"/>
-      <line num="90" count="192" type="stmt"/>
-      <line num="94" count="3" type="stmt"/>
-    </file>
+<coverage generated="1699124081620" clover="3.2.0">
+  <project timestamp="1699124081620" name="All files">
+    <metrics statements="52" coveredstatements="11" conditionals="10" coveredconditionals="0" methods="19" coveredmethods="4" elements="81" coveredelements="15" complexity="0" loc="52" ncloc="52" packages="1" files="1" classes="1"/>
     <file name="pieces.ts" path="/home/fwklaus/chess_app/src/lib/pieces.ts">
-      <metrics statements="52" coveredstatements="30" conditionals="10" coveredconditionals="0" methods="19" coveredmethods="14"/>
-      <line num="2" count="12" type="stmt"/>
-      <line num="5" count="12" type="stmt"/>
+      <metrics statements="52" coveredstatements="11" conditionals="10" coveredconditionals="0" methods="19" coveredmethods="4"/>
+      <line num="2" count="2" type="stmt"/>
+      <line num="5" count="2" type="stmt"/>
       <line num="8" count="1" type="stmt"/>
-      <line num="9" count="12" type="stmt"/>
-      <line num="10" count="12" type="stmt"/>
+      <line num="9" count="2" type="stmt"/>
+      <line num="10" count="2" type="stmt"/>
       <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
       <line num="15" count="0" type="stmt"/>
       <line num="17" count="0" type="stmt"/>
-      <line num="22" count="0" type="stmt"/>
-      <line num="23" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="24" count="0" type="stmt"/>
-      <line num="26" count="0" type="stmt"/>
-      <line num="32" count="2" type="stmt"/>
-      <line num="37" count="2" type="stmt"/>
+      <line num="23" count="0" type="stmt"/>
+      <line num="24" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="25" count="0" type="stmt"/>
+      <line num="27" count="0" type="stmt"/>
+      <line num="33" count="2" type="stmt"/>
       <line num="38" count="2" type="stmt"/>
       <line num="39" count="2" type="stmt"/>
-      <line num="43" count="0" type="cond" truecount="0" falsecount="1"/>
-      <line num="44" count="0" type="stmt"/>
-      <line num="47" count="0" type="cond" truecount="0" falsecount="5"/>
-      <line num="49" count="0" type="stmt"/>
+      <line num="40" count="2" type="stmt"/>
+      <line num="44" count="0" type="cond" truecount="0" falsecount="1"/>
+      <line num="45" count="0" type="stmt"/>
+      <line num="48" count="0" type="cond" truecount="0" falsecount="5"/>
       <line num="50" count="0" type="stmt"/>
-      <line num="52" count="0" type="stmt"/>
+      <line num="51" count="0" type="stmt"/>
       <line num="53" count="0" type="stmt"/>
-      <line num="55" count="0" type="stmt"/>
+      <line num="54" count="0" type="stmt"/>
       <line num="56" count="0" type="stmt"/>
-      <line num="58" count="0" type="stmt"/>
+      <line num="57" count="0" type="stmt"/>
       <line num="59" count="0" type="stmt"/>
-      <line num="61" count="0" type="stmt"/>
+      <line num="60" count="0" type="stmt"/>
       <line num="62" count="0" type="stmt"/>
-      <line num="67" count="0" type="stmt"/>
-      <line num="71" count="1" type="stmt"/>
-      <line num="76" count="2" type="stmt"/>
-      <line num="80" count="2" type="stmt"/>
-      <line num="81" count="2" type="stmt"/>
-      <line num="85" count="1" type="stmt"/>
-      <line num="90" count="2" type="stmt"/>
-      <line num="93" count="2" type="stmt"/>
-      <line num="97" count="1" type="stmt"/>
-      <line num="102" count="2" type="stmt"/>
-      <line num="105" count="2" type="stmt"/>
-      <line num="109" count="1" type="stmt"/>
-      <line num="114" count="2" type="stmt"/>
-      <line num="117" count="2" type="stmt"/>
-      <line num="121" count="1" type="stmt"/>
-      <line num="127" count="2" type="stmt"/>
-      <line num="133" count="2" type="stmt"/>
-      <line num="134" count="2" type="stmt"/>
-      <line num="135" count="2" type="stmt"/>
-      <line num="136" count="2" type="stmt"/>
-      <line num="140" count="0" type="stmt"/>
-      <line num="144" count="1" type="stmt"/>
-      <line num="148" count="1" type="stmt"/>
+      <line num="63" count="0" type="stmt"/>
+      <line num="68" count="0" type="stmt"/>
+      <line num="72" count="1" type="stmt"/>
+      <line num="77" count="0" type="stmt"/>
+      <line num="81" count="0" type="stmt"/>
+      <line num="82" count="0" type="stmt"/>
+      <line num="86" count="0" type="stmt"/>
+      <line num="91" count="0" type="stmt"/>
+      <line num="94" count="0" type="stmt"/>
+      <line num="98" count="0" type="stmt"/>
+      <line num="103" count="0" type="stmt"/>
+      <line num="106" count="0" type="stmt"/>
+      <line num="110" count="0" type="stmt"/>
+      <line num="115" count="0" type="stmt"/>
+      <line num="118" count="0" type="stmt"/>
+      <line num="122" count="0" type="stmt"/>
+      <line num="128" count="0" type="stmt"/>
+      <line num="134" count="0" type="stmt"/>
+      <line num="135" count="0" type="stmt"/>
+      <line num="136" count="0" type="stmt"/>
+      <line num="137" count="0" type="stmt"/>
+      <line num="141" count="0" type="stmt"/>
+      <line num="145" count="0" type="stmt"/>
+      <line num="149" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>
