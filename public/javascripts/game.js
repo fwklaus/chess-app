@@ -7,8 +7,10 @@ class Game {
         this.player1 = new Player("p1");
         this.player2 = new Player("p2");
         this.board = new Board();
-        this.player1.setPieces(this.board.roster, this.board);
-        this.player2.setPieces(this.board.roster, this.board);
+        // this.player1.setPieces(this.board.roster, this.board);
+        // this.player2.setPieces(this.board.roster, this.board);
+        this.initializePieces(this.player1);
+        this.initializePieces(this.player2);
     }
     reset() {
         return true;
@@ -16,38 +18,20 @@ class Game {
     startGame() {
         return true;
     }
-}
-exports.Game = Game;
-class Player {
-    constructor(player) {
-        this.pieces = [];
-        this.type = player;
-    }
-    // if player1, initialilze to p1 roster, if player2, initialize to p2 roster
-    setPieces(roster, board) {
-        switch (this.type) {
-            case ("p1"):
-                this.initializePieces(roster.p1, board);
-                break;
-            case ("p2"):
-                this.initializePieces(roster.p2, board);
-                break;
-            default:
-                let _exhastiveCheck = this.type;
-                throw new Error(JSON.stringify(_exhastiveCheck));
-        }
-    }
-    // create piece, set at position, register piece to board, and add to the players pieces
-    initializePieces(pieces, board) {
-        let types = Object.keys(pieces);
-        for (let i = 0; i < types.length; i++) {
-            let type = types[0];
-            if (board.isValidPiece(type)) {
-                let positions = pieces[type];
+    initializePieces(player) {
+        let roster = this.board.roster;
+        let board = this.board;
+        let playerType = player.type;
+        let playerPieces = roster[player.type];
+        let startingPieces = Object.keys(playerPieces);
+        for (let i = 0; i < startingPieces.length; i++) {
+            let pieceType = startingPieces[i];
+            if (board.isValidPiece(pieceType)) {
+                let positions = roster[playerType][pieceType];
                 for (let j = 0; j < positions.length; j++) {
                     let position = positions[j];
                     if (board.isValidPosition(position)) {
-                        this.pieces.push(board.registerPiece(type, position));
+                        player.setPiece(board.registerPiece(pieceType, position));
                     }
                     else {
                         throw new Error("Invalid Position");
@@ -59,6 +43,51 @@ class Player {
             }
         }
     }
+}
+exports.Game = Game;
+class Player {
+    constructor(player) {
+        this.pieces = [];
+        this.type = player;
+    }
+    setPiece(piece) {
+        this.pieces.push(piece);
+        return piece;
+    }
+    // if player1, initialilze to p1 roster, if player2, initialize to p2 roster
+    // setPieces(roster: PieceMap, board: GameBoard): void {
+    //   switch(this.type) {
+    //     case("p1"):
+    //       this.#initializePieces(roster.p1, board);
+    //       break;
+    //     case("p2"):
+    //       this.#initializePieces(roster.p2, board);
+    //       break;
+    //     default:
+    //       let _exhastiveCheck = this.type;
+    //       throw new Error(JSON.stringify(_exhastiveCheck));
+    //   }
+    // }
+    // create piece, set at position, register piece to board, and add to the players pieces
+    // #initializePieces(pieces: Roster, board: GameBoard): void {
+    //   let types = Object.keys(pieces);
+    //   for (let i = 0; i < types.length; i++) {
+    //     let type = types[0];
+    //     if (board.isValidPiece(type)) {
+    //       let positions = pieces[type]
+    //       for (let j = 0; j < positions.length; j++) {
+    //         let position = positions[j];
+    //         if (board.isValidPosition(position)) {
+    //           this.pieces.push(board.registerPiece(type, position));
+    //         } else {
+    //           throw new Error("Invalid Position");
+    //         }
+    //       }
+    //     } else {
+    //       throw new Error("Invalid Piece");
+    //     }
+    //   }
+    // }
     beginTimer() {
         console.log("6:00"); // output start time for player
     }
@@ -123,7 +152,7 @@ class Board {
                 newPiece = new King(position);
                 break;
             default:
-                throw new Error("Invalid piece"); // How do we test errors?
+                throw new Error("Invalid piece");
                 break;
         }
         this.assignSquare(newPiece);

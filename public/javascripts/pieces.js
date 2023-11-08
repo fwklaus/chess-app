@@ -1,15 +1,12 @@
 "use strict";
-var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
-};
-var _Piece_instances, _Piece_setPosition;
 class Piece {
     constructor(position) {
-        _Piece_instances.add(this);
         this.position = null;
-        __classPrivateFieldGet(this, _Piece_instances, "m", _Piece_setPosition).call(this, position);
+        this.setPosition(position);
+    }
+    setPosition(position) {
+        this.position = position;
+        return this.position;
     }
     getPosition() {
         if (this.position === null) {
@@ -20,8 +17,8 @@ class Piece {
         }
     }
     // need to register piece with board each time a piece moves
-    move(oldPos, newPos) {
-        __classPrivateFieldGet(this, _Piece_instances, "m", _Piece_setPosition).call(this, newPos);
+    move(newPos) {
+        this.setPosition(newPos);
         if (this.position === null) {
             throw new Error("Invalid request. Cannot get piece position until one is set");
         }
@@ -30,41 +27,54 @@ class Piece {
         }
     }
 }
-_Piece_instances = new WeakSet(), _Piece_setPosition = function _Piece_setPosition(position) {
-    this.position = position;
-    return this.position;
-};
 class Pawn extends Piece {
     constructor(position) {
         super(position);
         this.type = "pawn";
-        this.initial = true;
-        this.initialMove = false;
     }
-    promote(type) {
+    promote(type, player) {
         if (this.position === null) {
             throw new Error("Invalid call. Cannot promote piece that is set to null");
         }
-        switch (type) {
-            case ("rook"):
-                return new Rook(this.position);
-                break;
-            case ("knight"):
-                return new Knight(this.position);
-                break;
-            case ("bishop"):
-                return new Bishop(this.position);
-                break;
-            case ("queen"):
-                return new Queen(this.position);
-                break;
-            default:
-                let _exhaustiveCheck = type;
-                throw new Error("Invalid " + JSON.stringify(_exhaustiveCheck));
+        if (this.isPromotablePos(player)) {
+            switch (type) {
+                case ("rook"):
+                    return new Rook(this.position);
+                    break;
+                case ("knight"):
+                    return new Knight(this.position);
+                    break;
+                case ("bishop"):
+                    return new Bishop(this.position);
+                    break;
+                case ("queen"):
+                    return new Queen(this.position);
+                    break;
+                default:
+                    let _exhaustiveCheck = type;
+                    throw new Error("Invalid type: " + JSON.stringify(_exhaustiveCheck));
+            }
+        }
+        else {
+            throw new Error("Cannot promote pawn unless in promotable position");
         }
     }
-    isPromotable() {
-        return false;
+    isPromotablePos(player) {
+        let promotablePositions;
+        switch (player) {
+            case ("p1"):
+                promotablePositions = ['a8', 'b8', 'c8', 'd8', 'e8', 'f8', 'g8', 'h8'];
+                return promotablePositions.includes(this.position);
+                break;
+            case ("p2"):
+                promotablePositions = ['a1', 'b1', 'c1', 'd1', 'e1', 'f1', 'g1', 'h1'];
+                return promotablePositions.includes(this.position);
+                break;
+            default:
+                let _exhaustiveCheck = player;
+                throw new Error("Invalid player type: Player can either be 'p1' or 'p2'");
+                break;
+        }
     }
     describePiece() {
         return `I am a ${this.type}. I can only move forward 1 square at a time. But when I attack, I can only move forward diagonally by 1 square.`;
@@ -74,7 +84,6 @@ class Rook extends Piece {
     constructor(position) {
         super(position);
         this.type = "rook";
-        this.initial = true;
     }
     describePiece() {
         return `I am a ${this.type}. I can only move as far as I want horizontally and vertically in any direction.`;
@@ -113,7 +122,6 @@ class King extends Piece {
         this.type = "king";
         this.check = false;
         this.checkMate = false;
-        this.initial = true;
     }
     isThreatPostion() {
         return false;

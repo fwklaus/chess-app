@@ -5,6 +5,8 @@ interface BoardObject {
   [key:string]: StandardPiece | null;
 }
 
+type PlayerType = "p1" | "p2";
+
 interface PieceMap {
   "p1": Roster;
   "p2": Roster;
@@ -19,22 +21,22 @@ type Pieces = "pawn" | "rook" | "knight" | "bishop" | "queen" | "king";
 interface Gameplay {
   player1: Players;
   player2: Players;
+  board: GameBoard;
   reset(): boolean;
   startGame(): boolean;
-  board: GameBoard;
+  initializePieces(player: Players): void; 
 }
 
 interface Players {
-  pieces: allPieces;
-  type: "p1" | "p2";
+  pieces: StandardPiece[];
+  type: PlayerType;
+  setPiece(piece: StandardPiece): StandardPiece;
   beginTimer(): void;
-  setPieces(roster: PieceMap, board: GameBoard): void;
-  initializePieces(pieces: Roster, board: GameBoard): void;
 }
 
 interface GameBoard {
   squares: BoardObject;
-  roster: Registry;  
+  roster: PieceMap;  
   ranks: Ranks;
   files: Files;
   initGameBoard(): BoardObject;

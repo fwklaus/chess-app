@@ -2,10 +2,10 @@ class Piece implements StandardPiece {
   position: Position | null = null;
 
   constructor(position: Position) {
-    this.#setPosition(position)
+    this.setPosition(position)
   }
 
-  #setPosition(position: Position) {
+  setPosition(position: Position) {
     this.position = position;
     return this.position;
   }
@@ -19,8 +19,8 @@ class Piece implements StandardPiece {
   }
  
   // need to register piece with board each time a piece moves
-  move(oldPos: Position, newPos: Position): Position {
-    this.#setPosition(newPos);
+  move(newPos: Position): Position {
+    this.setPosition(newPos);
     if (this.position === null) {
       throw new Error("Invalid request. Cannot get piece position until one is set");
     } else {
@@ -31,21 +31,18 @@ class Piece implements StandardPiece {
 
 class Pawn extends Piece implements PawnShape {
   type: string = "pawn";
-  initial: boolean;
-  initialMove: boolean;
 
   constructor(position: Position) {
     super(position);
-    this.initial = true;
-    this.initialMove = false;
   }
 
-  promote(type: PromotionTypes): PromotableShapes {
+  promote(type: PromotionTypes, player: PlayerType): PromotableShapes {
     if (this.position === null) {
       throw new Error("Invalid call. Cannot promote piece that is set to null");
     }
 
-    switch(type) {
+    if (this.isPromotablePos(player)) {
+      switch(type) {
       case("rook"): 
         return new Rook(this.position);
         break;
@@ -60,12 +57,29 @@ class Pawn extends Piece implements PawnShape {
         break;
       default:
         let _exhaustiveCheck: never = type;
-        throw new Error("Invalid " + JSON.stringify(_exhaustiveCheck));
+        throw new Error("Invalid type: " + JSON.stringify(_exhaustiveCheck));
+      }
+    } else {
+      throw new Error("Cannot promote pawn unless in promotable position");
     }
   }
 
-  isPromotable(): boolean {
-    return false;
+  isPromotablePos(player: PlayerType): boolean {
+    let promotablePositions;
+    switch(player) {
+      case("p1"):
+        promotablePositions = ['a8', 'b8', 'c8', 'd8', 'e8', 'f8', 'g8', 'h8'];  
+        return promotablePositions.includes(this.position as string);
+        break;
+      case("p2"):
+        promotablePositions = ['a1', 'b1', 'c1', 'd1', 'e1', 'f1', 'g1', 'h1'];
+        return promotablePositions.includes(this.position as string);
+        break;
+      default:
+        let _exhaustiveCheck = player;
+        throw new Error("Invalid player type: Player can either be 'p1' or 'p2'");
+        break;
+    }
   }
 
   describePiece() {
@@ -73,13 +87,11 @@ class Pawn extends Piece implements PawnShape {
   }
 }
 
-class Rook extends Piece implements RookShape {
+class Rook extends Piece implements StandardPiece {
   type: string= "rook";
-  initial: boolean;
 
   constructor(position: Position) {
     super(position);
-    this.initial = true;
   }
 
   describePiece() {
@@ -87,7 +99,7 @@ class Rook extends Piece implements RookShape {
   }
 }
 
-class Knight extends Piece implements KnightShape {
+class Knight extends Piece implements StandardPiece {
   type: string = "knight"
 
   constructor(position: Position) {
@@ -99,7 +111,7 @@ class Knight extends Piece implements KnightShape {
   }
 }
 
-class Bishop extends Piece implements BishopShape {
+class Bishop extends Piece implements StandardPiece {
   type: string = "bishop"
 
   constructor(position: Position) {
@@ -111,7 +123,7 @@ class Bishop extends Piece implements BishopShape {
   }  
 }  
 
-class Queen extends Piece implements QueenShape {
+class Queen extends Piece implements StandardPiece {
   type: string = "queen"; 
 
   constructor(position: Position) {
@@ -128,13 +140,11 @@ class King extends Piece implements KingShape {
   type: string = "king";
   check: boolean;
   checkMate: boolean;
-  initial: boolean;
   
   constructor(position: Position) {
     super(position);
     this.check = false;
     this.checkMate = false;  
-    this.initial = true;
   }
 
   isThreatPostion(): boolean {

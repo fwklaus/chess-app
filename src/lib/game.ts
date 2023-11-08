@@ -9,8 +9,8 @@ export class Game implements Gameplay {
     this.player1 = new Player("p1");
     this.player2 = new Player("p2");
     this.board = new Board();
-    this.player1.setPieces(this.board.roster, this.board);
-    this.player2.setPieces(this.board.roster, this.board);
+    this.initializePieces(this.player1);
+    this.initializePieces(this.player2);
   }
   
   reset(): boolean {
@@ -22,43 +22,22 @@ export class Game implements Gameplay {
     
     return true;
   }
-}
 
-export class Player implements Players {
-  pieces: AllPieces = [];
-  type: "p1" | "p2";
-  
-  constructor(player: "p1" | "p2") {
-    this.type = player;
-  }
-  
-  // if player1, initialilze to p1 roster, if player2, initialize to p2 roster
-  setPieces(roster: PieceMap, board: GameBoard): void {
-    switch(this.type) {
-      case("p1"):
-        this.initializePieces(roster.p1, board);
-        break;
-      case("p2"):
-        this.initializePieces(roster.p2, board);
-        break;
-      default:
-        let _exhastiveCheck = this.type;
-        throw new Error(JSON.stringify(_exhastiveCheck));
-    }
-  }
+  initializePieces(player: Players) {
+    let roster = this.board.roster;
+    let board = this.board;
+    let playerType = player.type;
+    let playerPieces = roster[player.type];
+    let startingPieces = Object.keys(playerPieces);
 
-  // create piece, set at position, register piece to board, and add to the players pieces
-  initializePieces(pieces: Roster, board: GameBoard): void {
-    let types = Object.keys(pieces);
-
-    for (let i = 0; i < types.length; i++) {
-      let type = types[0];
-      if (board.isValidPiece(type)) {
-        let positions = pieces[type]
+    for (let i = 0; i < startingPieces.length; i++) {
+      let pieceType = startingPieces[i];
+      if (board.isValidPiece(pieceType)) {
+        let positions = roster[playerType][pieceType];
         for (let j = 0; j < positions.length; j++) {
           let position = positions[j];
           if (board.isValidPosition(position)) {
-            this.pieces.push(board.registerPiece(type, position));
+            player.setPiece(board.registerPiece(pieceType, position));
           } else {
             throw new Error("Invalid Position");
           }
@@ -67,6 +46,20 @@ export class Player implements Players {
         throw new Error("Invalid Piece");
       }
     }
+  }
+}
+
+export class Player implements Players {
+  pieces: StandardPiece[] = [];
+  type: "p1" | "p2";
+  
+  constructor(player: "p1" | "p2") {
+    this.type = player;
+  }
+
+  setPiece(piece: StandardPiece): StandardPiece {
+    this.pieces.push(piece);
+    return piece;
   }
 
   beginTimer(): void {
@@ -138,7 +131,7 @@ export class Board implements GameBoard {
         newPiece = new King(position);
         break;
       default: 
-        throw new Error("Invalid piece"); // How do we test errors?
+        throw new Error("Invalid piece");
         break;
     }
 
@@ -149,12 +142,6 @@ export class Board implements GameBoard {
   // assign the piece to the new position
   // if the piece is already on the board, remove it from its old position
   assignSquare(piece: StandardPiece, oldPos?: StandardPiece) {
-      if (oldPos) {
-        // remove the piece from the old position
-        // assign null to old position
-        // assign the piece to the new position
-      }
-
       this.squares[piece.getPosition()] = piece;
       return this.squares[piece.getPosition()];
   }

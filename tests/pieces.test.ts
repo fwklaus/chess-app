@@ -2,25 +2,62 @@ import {describe, expect, test, beforeAll, beforeEach} from '@jest/globals';
 
 const { Pawn, Rook, Knight, Bishop, Queen, King, Piece } = require('../src/lib/pieces');
 
-
 describe("Pawn Tests", () => {
-  test("Pawn is a Pawn object", () => {
-    let result = new Pawn();
-    
-    expect(result instanceof Pawn).toBe(true);
-    expect(typeof result).toBe('object');
+  let pawn: unknown;
+  beforeEach(() => {
+    pawn = new Pawn("a1");
+  });
+
+  test("Pawn is a Pawn object", () => {    
+    expect(pawn instanceof Pawn).toBe(true);
+    expect(typeof pawn).toBe('object');
   });
 
   test("describePiece returns description string", () => {
-    let result = new Pawn().describePiece();
-    let string = "I am a pawn. I can only move forward 1 square at a time. But when I attack, I can only move forward diagonally by 1 square."
+    let description = (pawn as typeof Pawn).describePiece();
+    let pawnDescription = "I am a pawn. I can only move forward 1 square at a time. But when I attack, I can only move forward diagonally by 1 square."
 
-    expect(typeof result).toBe('string');
-    expect(result).toBe(string);
+    expect(typeof description).toBe('string');
+    expect(description).toBe(pawnDescription);
   });
 
-  test.todo("promote returns an instance of a PromotableType");
-  test.todo("isPromotable returns true if pawn position is in the last file");
+  test("promote throws an error if promote is called on a Pawn instance and no argument is provided", () => {
+    expect(() => {
+      (pawn as typeof Pawn).promote("king", "p2")
+    }).toThrow("Invalid type: \"king\"");
+    
+    expect(() => {
+      (pawn as typeof Pawn).promote("pawn", "p2")
+    }).toThrow("Invalid type: \"pawn\"");
+
+    expect(() => {
+      (pawn as typeof Pawn).promote("queen", "p2")
+    }).not.toThrow("Invalid type: \"queen\"");
+  });
+
+  test("promote returns an instance for a given string specifying a valid type", () => {
+    let validTypes = ["rook", "knight", "bishop", "queen"];
+    expect((pawn as typeof Pawn).promote(validTypes[0], "p2") instanceof Rook).toBe(true);
+    expect((pawn as typeof Pawn).promote(validTypes[1], "p2") instanceof Knight).toBe(true);
+    expect((pawn as typeof Pawn).promote(validTypes[2], "p2") instanceof Bishop).toBe(true);
+    expect((pawn as typeof Pawn).promote(validTypes[3], "p2") instanceof Queen).toBe(true);
+  });
+
+  test("isPromotablePos returns true if pawn is in last file for either player", () => {
+    let player1 = "p1";
+    let player2 = "p2";
+
+
+
+
+    let pawn = new Pawn("a1");
+    let pawn2 = new Pawn("a8");
+
+
+
+
+  });
+
   test.todo("getPosition returns current pawn position");
   test.todo("move returns the position of the square the pawn moves to");
   test.todo("attack returns true when the pawn attack removes a piece from the board");
