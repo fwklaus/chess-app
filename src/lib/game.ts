@@ -12,15 +12,43 @@ export class Game implements Gameplay {
     this.initializePieces(this.player1);
     this.initializePieces(this.player2);
   }
+
+  setTime(time: string): string {
+    this.player1.time = time;
+    this.player2.time = time;
+    return time;
+  }
   
-  reset(): boolean {
+  newGame(): boolean {
 
     return true;
   }
 
   startGame(): boolean {
+    // game loop
+    // alternate player turns until the game is over
+      // the game ends when
+        // a king is in checkmate
+        // when there is a stalemate
+        // when a player gives up
+        // when the time runs out for a player
     
     return true;
+  }
+
+  playerTurn() {
+    // start timer
+    // wait for move to be made
+    // handle movement, provide feedback if bad move
+    // move piece if valid move
+    // end timer
+  }
+
+  computerTurn() {
+    // start timer
+    // calculate the best move (use libary or package?)
+    // move piece 
+    // end timer
   }
 
   initializePieces(player: Players) {
@@ -52,18 +80,39 @@ export class Game implements Gameplay {
 export class Player implements Players {
   pieces: StandardPiece[] = [];
   type: "p1" | "p2";
+  time: string = "6:00";
   
   constructor(player: "p1" | "p2") {
     this.type = player;
   }
 
+  // sets the initial position of a piece on the board
   setPiece(piece: StandardPiece): StandardPiece {
     this.pieces.push(piece);
     return piece;
   }
 
   beginTimer(): void {
-    console.log("6:00"); // output start time for player
+    // will require some mathematics
+    // use setInterval to decrement the clock when the timer starts
+      // must update the DOM - countdown as the timer counts up
+
+    console.log(this.time); // output start time for player
+  }
+
+  // move piece to new position
+  // register pieces new position on the board
+  // set the old position to null
+  move(newPos: Position): Position {
+    // this.setPosition(newPos);
+    // if (this.position === null) {
+    //   throw new Error("Invalid request. Cannot get piece position until one is set");
+    // } else {
+    //   return this.position;
+    // }
+    
+    // return this.setPosition(newPos);
+
   }
 }
 

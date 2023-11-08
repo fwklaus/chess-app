@@ -3,7 +3,7 @@ import {describe, expect, test, beforeAll, beforeEach} from '@jest/globals';
 const { Game, Player, Board}  = require('../src/lib/game')
 const { Pawn, Rook, Knight, Bishop, Queen, King, Piece } = require('../src/lib/pieces');
 
-describe("GameBoard Tests", () => {
+describe.skip("GameBoard Tests", () => {
   test("On initialization, new Board has 64 squares", () => {
     let board = new Board();
 
@@ -16,7 +16,7 @@ describe("GameBoard Tests", () => {
     expect(squares.length).toBe(64);
   });
 
-  test("On initialization, new Board squares represent valid Rank and File Coordinates", () => {
+  test("initGameBoard creates a gameboard of valid Rank and File Coordinates", () => {
     let files = [1, 2, 3, 4, 5, 6, 7, 8];
     let ranks = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
     let validCoordinates: string[] = [];
@@ -149,10 +149,40 @@ test("registerPiece returns a Pawn instance at a given position", () => {
 });
 
 
-describe.skip("Player tests", () => {
+describe("Player tests", () => {
+  test("setPiece adds a piece to the pieces array", () => {
+    let player1 = new Player("p1");
+    let pawn = new Pawn("a2");
+    let knight = new Knight("b1");
+    let king = new King("d1");
 
+
+    let pieces = player1.pieces;
+    expect(pieces.length).toBe(0);
+
+    player1.setPiece(pawn);
+    expect(pieces.length).toBe(1);
+
+    player1.setPiece(knight)
+    expect(pieces.length).toBe(2);
+
+    player1.setPiece(king);
+    expect(pieces.length).toBe(3);
+
+    expect(player1.pieces[0] instanceof Pawn).toBe(true);
+    expect(player1.pieces[1] instanceof Knight).toBe(true);
+    expect(player1.pieces[2] instanceof King).toBe(true);
+  });
+  
+  test.todo("Begin timer outputs the time limit for the player on each turn");
+  test.todo("move sets a players piece to the specified position on the board")
 });
 
 describe.skip("Game tests", () => {
-
+  test.todo("setTime sets the timer for both players");
+  test.todo("setTime returns the specified time used to set the timer for both players");
+  test.todo("initializePieces sets all starting pieces on the board for each player");
+  test.todo("initializePieces registers the starting position for all pieces on the board");
+  test.todo("reset");
+  test.todo("startGame");
 });

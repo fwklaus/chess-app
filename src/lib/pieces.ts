@@ -17,16 +17,6 @@ class Piece implements StandardPiece {
       return this.position;
     }
   }
- 
-  // need to register piece with board each time a piece moves
-  move(newPos: Position): Position {
-    this.setPosition(newPos);
-    if (this.position === null) {
-      throw new Error("Invalid request. Cannot get piece position until one is set");
-    } else {
-      return this.position;
-    }
-  }
 }
 
 class Pawn extends Piece implements PawnShape {

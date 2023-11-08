@@ -7,7 +7,7 @@ interface StandardPiece {
   position: Position | null;
   setPosition(position: Position): Position;
   getPosition(): Position;
-  move(newPos: Position): Position;
+  // move(newPos: Position): Position;
 }
 
 interface PawnShape extends StandardPiece {

@@ -22,16 +22,21 @@ interface Gameplay {
   player1: Players;
   player2: Players;
   board: GameBoard;
-  reset(): boolean;
+  newGame(): boolean;
   startGame(): boolean;
   initializePieces(player: Players): void; 
+  setTime(time: string): string;
+  playerTurn(): void;
+  computerturn(): void;
 }
 
 interface Players {
   pieces: StandardPiece[];
   type: PlayerType;
+  time: string;
   setPiece(piece: StandardPiece): StandardPiece;
   beginTimer(): void;
+  move(newPos: Position): Position;
 }
 
 interface GameBoard {

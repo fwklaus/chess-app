@@ -7,8 +7,6 @@ class Game {
         this.player1 = new Player("p1");
         this.player2 = new Player("p2");
         this.board = new Board();
-        // this.player1.setPieces(this.board.roster, this.board);
-        // this.player2.setPieces(this.board.roster, this.board);
         this.initializePieces(this.player1);
         this.initializePieces(this.player2);
     }
@@ -54,40 +52,6 @@ class Player {
         this.pieces.push(piece);
         return piece;
     }
-    // if player1, initialilze to p1 roster, if player2, initialize to p2 roster
-    // setPieces(roster: PieceMap, board: GameBoard): void {
-    //   switch(this.type) {
-    //     case("p1"):
-    //       this.#initializePieces(roster.p1, board);
-    //       break;
-    //     case("p2"):
-    //       this.#initializePieces(roster.p2, board);
-    //       break;
-    //     default:
-    //       let _exhastiveCheck = this.type;
-    //       throw new Error(JSON.stringify(_exhastiveCheck));
-    //   }
-    // }
-    // create piece, set at position, register piece to board, and add to the players pieces
-    // #initializePieces(pieces: Roster, board: GameBoard): void {
-    //   let types = Object.keys(pieces);
-    //   for (let i = 0; i < types.length; i++) {
-    //     let type = types[0];
-    //     if (board.isValidPiece(type)) {
-    //       let positions = pieces[type]
-    //       for (let j = 0; j < positions.length; j++) {
-    //         let position = positions[j];
-    //         if (board.isValidPosition(position)) {
-    //           this.pieces.push(board.registerPiece(type, position));
-    //         } else {
-    //           throw new Error("Invalid Position");
-    //         }
-    //       }
-    //     } else {
-    //       throw new Error("Invalid Piece");
-    //     }
-    //   }
-    // }
     beginTimer() {
         console.log("6:00"); // output start time for player
     }
@@ -161,11 +125,6 @@ class Board {
     // assign the piece to the new position
     // if the piece is already on the board, remove it from its old position
     assignSquare(piece, oldPos) {
-        if (oldPos) {
-            // remove the piece from the old position
-            // assign null to old position
-            // assign the piece to the new position
-        }
         this.squares[piece.getPosition()] = piece;
         return this.squares[piece.getPosition()];
     }
