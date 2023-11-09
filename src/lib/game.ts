@@ -113,6 +113,7 @@ export class Player implements Players {
     
     // return this.setPosition(newPos);
 
+    return newPos;
   }
 }
 

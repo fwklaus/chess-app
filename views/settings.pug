@@ -1,0 +1,36 @@
+extends layout
+
+block settings 
+  main(id="settings")
+    h1 Settings
+
+    div(class="settings")
+      form(action="/settings" method="POST")
+        div(class="inputs")
+          label(for="time")
+            p Time
+            select(id="time")
+              option(value="6:00") 6:00
+              option(value="7:00") 7:00
+              option(value="8:00") 8:00
+              option(value="9:00") 9:00
+              option(value="10:00") 10:00
+          label(for="theme")
+            p Theme
+            select(id="theme")
+              option(value="Light") Light
+              option(value="Dark") Dark
+          label(for="language")
+            p Language
+            select(id="language")
+              option(value="en") English
+              option(value="es") Spanish
+          label(for="stats") 
+            p Stats
+            div
+              p Games played: 0
+              p Games Won: 0
+              p Win Percentage: 0%
+
+    a(href="/")
+      button Return to Home

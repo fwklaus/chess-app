@@ -1,5 +1,4 @@
 import {describe, expect, test, beforeAll, beforeEach} from '@jest/globals';
-import exp from 'constants';
 
 const { Pawn, Rook, Knight, Bishop, Queen, King, Piece } = require('../src/lib/pieces');
 

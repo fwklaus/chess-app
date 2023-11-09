@@ -27,7 +27,7 @@ interface Gameplay {
   initializePieces(player: Players): void; 
   setTime(time: string): string;
   playerTurn(): void;
-  computerturn(): void;
+  computerTurn(): void;
 }
 
 interface Players {

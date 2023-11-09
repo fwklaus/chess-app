@@ -10,11 +10,36 @@ class Game {
         this.initializePieces(this.player1);
         this.initializePieces(this.player2);
     }
-    reset() {
+    setTime(time) {
+        this.player1.time = time;
+        this.player2.time = time;
+        return time;
+    }
+    newGame() {
         return true;
     }
     startGame() {
+        // game loop
+        // alternate player turns until the game is over
+        // the game ends when
+        // a king is in checkmate
+        // when there is a stalemate
+        // when a player gives up
+        // when the time runs out for a player
         return true;
+    }
+    playerTurn() {
+        // start timer
+        // wait for move to be made
+        // handle movement, provide feedback if bad move
+        // move piece if valid move
+        // end timer
+    }
+    computerTurn() {
+        // start timer
+        // calculate the best move (use libary or package?)
+        // move piece 
+        // end timer
     }
     initializePieces(player) {
         let roster = this.board.roster;
@@ -46,14 +71,32 @@ exports.Game = Game;
 class Player {
     constructor(player) {
         this.pieces = [];
+        this.time = "6:00";
         this.type = player;
     }
+    // sets the initial position of a piece on the board
     setPiece(piece) {
         this.pieces.push(piece);
         return piece;
     }
     beginTimer() {
-        console.log("6:00"); // output start time for player
+        // will require some mathematics
+        // use setInterval to decrement the clock when the timer starts
+        // must update the DOM - countdown as the timer counts up
+        console.log(this.time); // output start time for player
+    }
+    // move piece to new position
+    // register pieces new position on the board
+    // set the old position to null
+    move(newPos) {
+        // this.setPosition(newPos);
+        // if (this.position === null) {
+        //   throw new Error("Invalid request. Cannot get piece position until one is set");
+        // } else {
+        //   return this.position;
+        // }
+        // return this.setPosition(newPos);
+        return newPos;
     }
 }
 exports.Player = Player;

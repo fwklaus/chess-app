@@ -16,16 +16,6 @@ class Piece {
             return this.position;
         }
     }
-    // need to register piece with board each time a piece moves
-    move(newPos) {
-        // this.setPosition(newPos);
-        // if (this.position === null) {
-        //   throw new Error("Invalid request. Cannot get piece position until one is set");
-        // } else {
-        //   return this.position;
-        // }
-        return this.setPosition(newPos);
-    }
 }
 class Pawn extends Piece {
     constructor(position) {
