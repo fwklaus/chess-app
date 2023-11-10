@@ -22,6 +22,8 @@ interface Gameplay {
   player1: Players;
   player2: Players;
   board: GameBoard;
+  view: DOMViewer;
+  handlers: EventHandlers;
   newGame(): boolean;
   startGame(): boolean;
   initializePieces(player: Players): void; 

@@ -7,6 +7,8 @@ mvToPub () {
   mv dist/lib/routes.js $NODE_ROOT/../lib
   mv dist/lib/pieces.js $NODE_ROOT/../public/javascripts
   mv dist/lib/game.js $NODE_ROOT/../public/javascripts
+  mv dist/lib/handlers.js $NODE_ROOT/../public/javascripts
+  mv dist/lib/view.js $NODE_ROOT/../public/javascripts
   mv dist/app.js $NODE_ROOT/..
   echo "Success!"
 } 

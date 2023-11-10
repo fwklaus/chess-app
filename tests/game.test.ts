@@ -1,6 +1,6 @@
 import {describe, expect, test, beforeAll, beforeEach} from '@jest/globals';
 
-const { Game, Player, Board}  = require('../src/lib/game')
+const { GameController, Player, Board}  = require('../src/lib/game')
 const { Pawn, Rook, Knight, Bishop, Queen, King, Piece } = require('../src/lib/pieces');
 
 describe.skip("GameBoard Tests", () => {
@@ -178,7 +178,7 @@ describe("Player tests", () => {
   test.todo("move sets a players piece to the specified position on the board")
 });
 
-describe.skip("Game tests", () => {
+describe.skip("GameController tests", () => {
   test.todo("setTime sets the timer for both players");
   test.todo("setTime returns the specified time used to set the timer for both players");
   test.todo("initializePieces sets all starting pieces on the board for each player");

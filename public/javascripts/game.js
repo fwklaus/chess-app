@@ -1,9 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Board = exports.Player = exports.Game = void 0;
+exports.Board = exports.Player = exports.GameController = void 0;
 let { Pawn, King, Queen, Rook, Bishop, Knight } = require('./pieces');
-class Game {
+let View = require("./view");
+let Handlers = require("./handlers");
+class GameController {
     constructor() {
+        this.handlers = new Handlers();
+        this.view = new View(this.handlers);
         this.player1 = new Player("p1");
         this.player2 = new Player("p2");
         this.board = new Board();
@@ -67,7 +71,7 @@ class Game {
         }
     }
 }
-exports.Game = Game;
+exports.GameController = GameController;
 class Player {
     constructor(player) {
         this.pieces = [];

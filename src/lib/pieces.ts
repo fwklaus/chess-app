@@ -1,4 +1,4 @@
-class Piece implements StandardPiece {
+export class Piece implements StandardPiece {
   position: Position | null = null;
 
   constructor(position: Position) {
@@ -19,7 +19,7 @@ class Piece implements StandardPiece {
   }
 }
 
-class Pawn extends Piece implements PawnShape {
+export class Pawn extends Piece implements PawnShape {
   type: string = "pawn";
 
   constructor(position: Position) {
@@ -77,7 +77,7 @@ class Pawn extends Piece implements PawnShape {
   }
 }
 
-class Rook extends Piece implements StandardPiece {
+export class Rook extends Piece implements StandardPiece {
   type: string= "rook";
 
   constructor(position: Position) {
@@ -89,7 +89,7 @@ class Rook extends Piece implements StandardPiece {
   }
 }
 
-class Knight extends Piece implements StandardPiece {
+export class Knight extends Piece implements StandardPiece {
   type: string = "knight"
 
   constructor(position: Position) {
@@ -101,7 +101,7 @@ class Knight extends Piece implements StandardPiece {
   }
 }
 
-class Bishop extends Piece implements StandardPiece {
+export class Bishop extends Piece implements StandardPiece {
   type: string = "bishop"
 
   constructor(position: Position) {
@@ -113,7 +113,7 @@ class Bishop extends Piece implements StandardPiece {
   }  
 }  
 
-class Queen extends Piece implements StandardPiece {
+export class Queen extends Piece implements StandardPiece {
   type: string = "queen"; 
 
   constructor(position: Position) {
@@ -126,7 +126,7 @@ class Queen extends Piece implements StandardPiece {
 }
 
 
-class King extends Piece implements KingShape {
+export class King extends Piece implements KingShape {
   type: string = "king";
   check: boolean;
   checkMate: boolean;
@@ -145,12 +145,3 @@ class King extends Piece implements KingShape {
     return `I am a ${this.type}. I can only move forward 1 square in any direction. If I am cornered, the game is over.`;
   }
 }
-
-module.exports = {
-  Pawn,
-  Rook,
-  Knight,
-  Bishop,
-  Queen, 
-  King,
-};

@@ -1,4 +1,6 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.King = exports.Queen = exports.Bishop = exports.Knight = exports.Rook = exports.Pawn = exports.Piece = void 0;
 class Piece {
     constructor(position) {
         this.position = null;
@@ -17,6 +19,7 @@ class Piece {
         }
     }
 }
+exports.Piece = Piece;
 class Pawn extends Piece {
     constructor(position) {
         super(position);
@@ -70,6 +73,7 @@ class Pawn extends Piece {
         return `I am a ${this.type}. I can only move forward 1 square at a time. But when I attack, I can only move forward diagonally by 1 square.`;
     }
 }
+exports.Pawn = Pawn;
 class Rook extends Piece {
     constructor(position) {
         super(position);
@@ -79,6 +83,7 @@ class Rook extends Piece {
         return `I am a ${this.type}. I can only move as far as I want horizontally and vertically in any direction.`;
     }
 }
+exports.Rook = Rook;
 class Knight extends Piece {
     constructor(position) {
         super(position);
@@ -88,6 +93,7 @@ class Knight extends Piece {
         return `I am a ${this.type}. I can jump over pieces. I also move in an L shape - either 1 up and 2 over, or 1 over and 2 up - in any direction.`;
     }
 }
+exports.Knight = Knight;
 class Bishop extends Piece {
     constructor(position) {
         super(position);
@@ -97,6 +103,7 @@ class Bishop extends Piece {
         return `I am a ${this.type}. I move as far as I want diagonally in any direction. I'm the right hand for the King and the Queen.`;
     }
 }
+exports.Bishop = Bishop;
 class Queen extends Piece {
     constructor(position) {
         super(position);
@@ -106,6 +113,7 @@ class Queen extends Piece {
         return `I am a ${this.type}. I can only as far as I want in any direction. I am the most powerful piece on the board, but my King gets all the credit.`;
     }
 }
+exports.Queen = Queen;
 class King extends Piece {
     constructor(position) {
         super(position);
@@ -120,11 +128,4 @@ class King extends Piece {
         return `I am a ${this.type}. I can only move forward 1 square in any direction. If I am cornered, the game is over.`;
     }
 }
-module.exports = {
-    Pawn,
-    Rook,
-    Knight,
-    Bishop,
-    Queen,
-    King,
-};
+exports.King = King;

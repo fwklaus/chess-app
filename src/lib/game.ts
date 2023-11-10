@@ -1,11 +1,17 @@
 let { Pawn, King, Queen, Rook, Bishop, Knight } = require('./pieces');
+let View = require("./view");
+let Handlers = require("./handlers")
 
-export class Game implements Gameplay {
+export class GameController implements Gameplay {
   player1: Players;
   player2: Players;
   board: GameBoard;
+  view: DOMViewer;
+  handlers: EventHandlers;
 
   constructor() {
+    this.handlers = new Handlers();
+    this.view = new View(this.handlers);
     this.player1 = new Player("p1");
     this.player2 = new Player("p2");
     this.board = new Board();

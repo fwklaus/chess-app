@@ -40,6 +40,6 @@ app.get('/settings', routes.settings);
 app.post('/settings', routes.changeSettings);
 // to run tests on endpoints (app.test.ts), comment out the app.listen call following the export
 module.exports = app;
-app.listen(port, () => {
-    console.log(`⚡ Listening on ${host}:${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`⚡ Listening on ${host}:${port}`);
+// });
