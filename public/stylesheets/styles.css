@@ -142,16 +142,21 @@ div.settings {
   grid-template-rows: 1fr 1fr;
 }
 
-div.inputs label {
+ul {
+  list-style-type: none;
+}
+
+ul.inputs li {
   display: grid;
   grid-template-columns: [first] 1fr [second] 1fr [third] 1fr [fourth] 1fr;
 }
 
-div.inputs label p {
+ul.inputs li p {
   grid-column: second / span third;
   text-align: left;
 }
 
-div.inputs label select {
+ul.inputs li select {
   grid-column: third / span fourth;
 }
+

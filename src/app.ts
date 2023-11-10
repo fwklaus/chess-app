@@ -38,7 +38,7 @@ app.get('/home', routes.home);
 app.get('/settings', routes.settings);
 
 // post routes
-app.post('settings', routes.changeSettings);
+app.post('/settings', routes.changeSettings);
 
 // to run tests on endpoints (app.test.ts), comment out the app.listen call following the export
 module.exports = app;

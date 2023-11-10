@@ -6,31 +6,33 @@ block settings
 
     div(class="settings")
       form(action="/settings" method="POST")
-        div(class="inputs")
-          label(for="time")
+        ul(class="inputs")
+          li
             p Time
-            select(id="time")
+            select(name="time")
               option(value="6:00") 6:00
               option(value="7:00") 7:00
               option(value="8:00") 8:00
               option(value="9:00") 9:00
               option(value="10:00") 10:00
-          label(for="theme")
+          li
             p Theme
-            select(id="theme")
+            select(name="theme")
               option(value="Light") Light
               option(value="Dark") Dark
-          label(for="language")
+          li
             p Language
-            select(id="language")
+            select(name="language")
               option(value="en") English
               option(value="es") Spanish
-          label(for="stats") 
+          li
             p Stats
             div
               p Games played: 0
               p Games Won: 0
               p Win Percentage: 0%
+        button(type="submit") Submit
+
 
     a(href="/")
       button Return to Home
