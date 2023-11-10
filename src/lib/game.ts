@@ -65,11 +65,11 @@ export class GameController implements Gameplay {
     let startingPieces = Object.keys(playerPieces);
 
     for (let i = 0; i < startingPieces.length; i++) {
-      let pieceType = startingPieces[i];
+      let pieceType = startingPieces[i] as string;
       if (board.isValidPiece(pieceType)) {
-        let positions = roster[playerType][pieceType];
+        let positions = roster[playerType][pieceType] as string[];
         for (let j = 0; j < positions.length; j++) {
-          let position = positions[j];
+          let position = positions[j] as string;
           if (board.isValidPosition(position)) {
             player.setPiece(board.registerPiece(pieceType, position));
           } else {

@@ -1,5 +1,4 @@
 import express, { Express, Request, Response} from 'express';
-import { resourceLimits } from 'worker_threads';
 
 declare module 'express-session' {
   interface SessionData {
