@@ -2,17 +2,17 @@
   "name": "chess_app",
   "version": "1.0.0",
   "description": "The Chess app is a fun side project and vehicle for experimentation for some of the newer technologies, data structures, andalgorithms I've been learning about.",
-  "main": "app.js",
+  "main": "./dist/app.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
     "debug-test": "jest --detectOpenHandles --forceExit",
     "test": "jest --coverage",
-    "build": "npx tsc && bash lib/mv-files.sh",
-    "start": "node app.js",
-    "dev": "nodemon app.js",
-    "debug": "node --inspect app.js"
+    "build": "npx tsc",
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
+    "debug": "node --inspect ./bin/www"
   },
   "repository": {
     "type": "git",

@@ -26,12 +26,12 @@ export class Pawn extends Piece implements PawnShape {
     super(position);
   }
 
-  promote(type: PromotionTypes, player: PlayerType): PromotableShapes {
+  promote(type: PromotionTypes, player: PlayerType, pos: Position): PromotableShapes {
     if (this.position === null) {
       throw new Error("Invalid call. Cannot promote piece that is set to null");
     }
 
-    if (this.isPromotablePos(player)) {
+    if (this.isPromotableType(type) && this.isPromotablePos(player, pos)) {
       switch(type) {
       case("rook"): 
         return new Rook(this.position);
@@ -50,26 +50,30 @@ export class Pawn extends Piece implements PawnShape {
         throw new Error("Invalid type: " + JSON.stringify(_exhaustiveCheck));
       }
     } else {
-      throw new Error("Cannot promote pawn unless in promotable position");
+      throw new Error("Must provide valid PromotableType and valid PlayerType");
     }
   }
 
-  isPromotablePos(player: PlayerType): boolean {
+  isPromotableType(type: PromotionTypes): boolean {
+    return type === "rook" || type === 'knight' || type === "bishop" || type === "queen";
+  }
+
+  isPromotablePos(player: PlayerType, pos: Position): boolean {
     let promotablePositions;
     switch(player) {
       case("p1"):
-        promotablePositions = ['a8', 'b8', 'c8', 'd8', 'e8', 'f8', 'g8', 'h8'];  
-        return promotablePositions.includes(this.position as string);
+        promotablePositions = new RegExp(/[a-h]8/);
         break;
       case("p2"):
-        promotablePositions = ['a1', 'b1', 'c1', 'd1', 'e1', 'f1', 'g1', 'h1'];
-        return promotablePositions.includes(this.position as string);
+        promotablePositions = new RegExp(/[a-h]1/);
         break;
       default:
         let _exhaustiveCheck = player;
         throw new Error("Invalid player type: Player can either be 'p1' or 'p2'");
         break;
     }
+
+    return promotablePositions.test(pos);
   }
 
   describePiece() {

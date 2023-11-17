@@ -25,11 +25,11 @@ class Pawn extends Piece {
         super(position);
         this.type = "pawn";
     }
-    promote(type, player) {
+    promote(type, player, pos) {
         if (this.position === null) {
             throw new Error("Invalid call. Cannot promote piece that is set to null");
         }
-        if (this.isPromotablePos(player)) {
+        if (this.isPromotableType(type) && this.isPromotablePos(player, pos)) {
             switch (type) {
                 case ("rook"):
                     return new Rook(this.position);
@@ -49,25 +49,27 @@ class Pawn extends Piece {
             }
         }
         else {
-            throw new Error("Cannot promote pawn unless in promotable position");
+            throw new Error("Must provide valid PromotableType and valid PlayerType");
         }
     }
-    isPromotablePos(player) {
+    isPromotableType(type) {
+        return type === "rook" || type === 'knight' || type === "bishop" || type === "queen";
+    }
+    isPromotablePos(player, pos) {
         let promotablePositions;
         switch (player) {
             case ("p1"):
-                promotablePositions = ['a8', 'b8', 'c8', 'd8', 'e8', 'f8', 'g8', 'h8'];
-                return promotablePositions.includes(this.position);
+                promotablePositions = new RegExp(/[a-h]8/);
                 break;
             case ("p2"):
-                promotablePositions = ['a1', 'b1', 'c1', 'd1', 'e1', 'f1', 'g1', 'h1'];
-                return promotablePositions.includes(this.position);
+                promotablePositions = new RegExp(/[a-h]1/);
                 break;
             default:
                 let _exhaustiveCheck = player;
                 throw new Error("Invalid player type: Player can either be 'p1' or 'p2'");
                 break;
         }
+        return promotablePositions.test(pos);
     }
     describePiece() {
         return `I am a ${this.type}. I can only move forward 1 square at a time. But when I attack, I can only move forward diagonally by 1 square.`;

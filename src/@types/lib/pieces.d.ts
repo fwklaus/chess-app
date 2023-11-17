@@ -11,8 +11,9 @@ interface StandardPiece {
 }
 
 interface PawnShape extends StandardPiece {
-  promote(type: PromotionTypes, player: "p1" | "p2"): PromotableShapes;
-  isPromotablePos(player: "p1" | "p2"): boolean;
+  promote(type: PromotionTypes, player: "p1" | "p2", pos: Position): PromotableShapes;
+  isPromotablePos(player: "p1" | "p2", pos: Position): boolean;
+  isPromotableType(type: PromotionTypes): boolean;
 } 
 
 interface KingShape extends StandardPiece {
