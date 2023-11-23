@@ -1,14 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ES2015",
-    "module": "commonjs",
+    "target": "es6",
+    "module": "nodenext",
     "strict": true,
-    "outDir": "./dist",
+    "outDir": "../dist",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "noEmitOnError": true
   },
-  "include": ["./src/**/*"],
+  "include": ["**/*"],
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Recommended"
 }

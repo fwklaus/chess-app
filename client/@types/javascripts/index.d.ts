@@ -52,3 +52,41 @@ interface GameBoard {
   isValidPiece(name: string): boolean;
   isValidPosition(pos: string): boolean;
 }
+
+interface EventHandlers {
+  handleStart(event: Event): void;
+}
+
+type Position = string; // use Regex to validate the string 
+
+type PromotionTypes = "rook" | "knight" | "bishop" | "queen";
+type PromotableShapes = RookShape | KnightShape | BishopShape | QueenShape;
+
+interface StandardPiece {
+  position: Position | null;
+  setPosition(position: Position): Position;
+  getPosition(): Position;
+  // move(newPos: Position): Position;
+}
+
+interface PawnShape extends StandardPiece {
+  promote(type: PromotionTypes, player: PlayerType, pos: Position): PromotableShapes;
+  isPromotablePos(player: PlayerType, pos: Position): boolean;
+  isPromotableType(type: PromotionTypes): boolean;
+} 
+
+interface KingShape extends StandardPiece {
+  check: boolean;
+  checkMate: boolean;
+  isThreatPostion(): boolean // used to determine if spot is threat position? Necessary?
+}
+
+interface DOMViewer {
+  playerPieces?: NodeListOf<HTMLImageElement>;
+  boardSquares?: NodeListOf<HTMLDivElement>;
+  startButton: HTMLButtonElement | null;
+  selectBoardSquares(): void;
+  selectPlayerPieces(): void;
+  selectStartButton(): void;
+  bindListeners(handlers: EventHandlers): void;
+}
