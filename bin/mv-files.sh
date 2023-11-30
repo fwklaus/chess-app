@@ -5,7 +5,8 @@ mvToPub () {
   cd $NODE_ROOT/..
   # cp dist/javascripts/index.js $NODE_ROOT/../public/javascripts
   # cp dist/index.js $NODE_ROOT/../public/javascripts
-  cp dist/javascripts/*.js $NODE_ROOT/../public/javascripts
+  # cp dist/javascripts/*.js $NODE_ROOT/../public/javascripts
+  cp dist/*.js $NODE_ROOT/../public/javascripts
   # mv dist/* $NODE_ROOT/..
   # mv dist/front.js $NODE_ROOT/../public/javascripts
   # mv dist/lib/routes.js $NODE_ROOT/../lib

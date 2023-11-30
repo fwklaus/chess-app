@@ -3,7 +3,8 @@ doctype html
 html(lang="en-US")
   head
     title Ajedrez
-    //- script(type="module" src="javascripts/index.js")
+s
+    script var exports = {};
     script(src="javascripts/gameController.js")
     script(src="javascripts/board.js")
     script(src="javascripts/handlers.js")
@@ -16,7 +17,7 @@ html(lang="en-US")
     script(src="javascripts/bishop.js")
     script(src="javascripts/king.js")
     script(src="javascripts/knight.js")
-    //- script(src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js" integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg==" crossorigin="anonymous" referrerpolicy="no-referrer" ) 
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js" integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg==" crossorigin="anonymous" referrerpolicy="no-referrer" ) 
     link(rel="stylesheet" href="/stylesheets/styles.css")
   body
     header
