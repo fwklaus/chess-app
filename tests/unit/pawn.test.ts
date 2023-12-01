@@ -1,7 +1,6 @@
 import {describe, expect, test, beforeAll, beforeEach} from '@jest/globals';
 import Pawn from '../../client/javascripts/pawn';
 
-
 describe("Pawn Tests", () => {
   let pawn: Pawn;
   beforeEach(() => {
